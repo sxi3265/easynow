@@ -28,5 +28,13 @@ namespace EasyNow.App.Droid.Util
                 Android.Widget.Toast.MakeText(Context,resId,ToastLength.Short).Show();
             });
         }
+
+        public void SettingAccessibility()
+        {
+            Post(() =>
+            {
+                SettingUtil.SettingAccessibility(Context);
+            });
+        }
     }
 }

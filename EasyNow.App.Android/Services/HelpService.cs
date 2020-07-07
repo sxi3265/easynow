@@ -53,20 +53,66 @@ namespace EasyNow.App.Droid.Services
 
         public void RunApp()
         {
-            if (!Settings.CanDrawOverlays(Context))
-            {
-                FloatingPermission.SettingOverlayPermission(Context);
-                return;
-            }
+            var js = @"app.startAuto();
+                app.launchApp('com.ophone.reader.ui');
+                app.toast('等待首页搜索');
+                var node=ui.wait(function(node){return node.id=='com.ophone.reader.ui:id/btn_bookshelf_search'||node.id=='com.ophone.reader.ui:id/recom_btn_search';});
+                node.click();
+                app.toast('等待输入框');
+                node=ui.wait(function(node){return node.id=='com.ophone.reader.ui:id/etSearch';});
+                node.inputText('天天爱阅读');
+                node=ui.wait(function(node){return node.id=='com.ophone.reader.ui:id/btn_search_txt';});
+                node.click();
+                app.toast('等待搜索结果');
+                node=ui.wait(function(node){return node.text=='%E6%90%9C%E7%B4%A2%E5%8F%A3%E4%BB%A4%E5%9B%BE';});
+                node.click();
+                node=ui.wait(function(node){return node.text=='去阅读'||node.text=='已完成';});
+                if(node.text=='已完成'){
+                    if(ui.where(function(node){return node.text=='已完成';}).length==2){
+                        app.toast('已完成打卡');
+                        return;
+                    }
+                    app.toast('已完成阅读，准备开始签到');
+                    node=ui.wait(function(node){return node.text=='签到'&&node.clickable;});
+                    node.click();
+                    return;
+                }
+                node.click();
+                node=ui.wait(function(node){return node.text=='cover180240';});
+                node.click();
+                app.toast('进入书籍');
+                node=ui.wait(function(node){return node.id=='com.ophone.reader.ui:id/reader_content_view';});
+                app.toast('开始翻页');
+                var startTime = new Date().getTime();
+                while(true){
+                    var rnd = Math.random();
+                    device.touch(node.boundsInScreen.left+node.boundsInScreen.width()*(0.80+0.5*rnd),node.boundsInScreen.top+node.boundsInScreen.height()*(0.80+0.5*rnd));
+                    app.sleep(10000);
+                    if(new Date().getTime()-startTime>1020000){
+                        app.toast('已阅读17分钟');
+                        return;
+                    }
+                }
+                ";
 
-            var windowManager = Context.GetSystemService(Context.WindowService).JavaCast<IWindowManager>();
+            var context = _scope.Resolve<Context>();
+            var intent = new Intent(context,typeof(ScriptService));
+            intent.PutExtra("ScriptSource", js);
+            context.StartService(intent);
+            //if (!Settings.CanDrawOverlays(Context))
+            //{
+            //    SettingUtil.SettingOverlayPermission(Context);
+            //    return;
+            //}
 
-            var floatingView = new FloatingView();
-            var param = new WindowManagerLayoutParams(100,100,WindowManagerTypes.ApplicationOverlay,WindowManagerFlags.NotFocusable | WindowManagerFlags.NotTouchModal,Format.Transparent);
-            param.Gravity = GravityFlags.Top | GravityFlags.Left;
-            param.X = 0;
-            param.Y = 100;
-            windowManager.AddView(floatingView.ConvertFormsToNative(Context,new Rectangle(0,0,38,38)),param);
+            //var windowManager = Context.GetSystemService(Context.WindowService).JavaCast<IWindowManager>();
+
+            //var floatingView = new FloatingView();
+            //var param = new WindowManagerLayoutParams(100,100,WindowManagerTypes.ApplicationOverlay,WindowManagerFlags.NotFocusable | WindowManagerFlags.NotTouchModal,Format.Transparent);
+            //param.Gravity = GravityFlags.Top | GravityFlags.Left;
+            //param.X = 0;
+            //param.Y = 100;
+            //windowManager.AddView(floatingView.ConvertFormsToNative(Context,new Rectangle(0,0,38,38)),param);
 
             //var imageView = new ImageView(Context);
             //imageView.SetImageResource(Resource.Mipmap.icon);

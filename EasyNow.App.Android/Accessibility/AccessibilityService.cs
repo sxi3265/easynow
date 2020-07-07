@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace EasyNow.App.Droid.Accessibility
 {
-    [Service(Label = "EasyNow自动服务", Permission = Manifest.Permission.BindAccessibilityService)]
+    [Service(Label = "EasyNow自动服务", Permission = Manifest.Permission.BindAccessibilityService,Name = "me.easynow.app.AccessibilityService")]
     [IntentFilter(new[] { "android.accessibilityservice.AccessibilityService" })]
     [MetaData("android.accessibilityservice", Resource = "@xml/auto_accessibility_service_config")]
     public class AccessibilityService:Android.AccessibilityServices.AccessibilityService

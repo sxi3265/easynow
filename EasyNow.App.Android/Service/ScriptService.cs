@@ -7,6 +7,7 @@ using Android.Content;
 using Android.OS;
 using Autofac;
 using EasyNow.App.Droid.Script;
+using Microsoft.Extensions.Logging;
 using Xamarin.Forms;
 
 namespace EasyNow.App.Droid.Service
@@ -16,6 +17,7 @@ namespace EasyNow.App.Droid.Service
     {
         private ILifetimeScope _scope;
         private ConcurrentDictionary<Guid, CancellationTokenSource> _ctsList;
+        private ILogger Logger=>_scope.Resolve<ILogger<ScriptService>>();
 
         public override void OnCreate()
         {
@@ -29,7 +31,9 @@ namespace EasyNow.App.Droid.Service
                 manager.CreateNotificationChannel(notificationChannel);
             }
 
-            StartForeground(1, BuildForegroundNotification());
+            var notification = BuildForegroundNotification();
+            // todo 点击打开应用
+            StartForeground(1, notification);
         }
 
         public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
@@ -40,9 +44,16 @@ namespace EasyNow.App.Droid.Service
             _ctsList.TryAdd(jobId, cts);
             Task.Run(() =>
             {
-                using var scriptRuntime = _scope.Resolve<IScriptEngine>().CreateScriptRuntime(cts.Token);
-                scriptRuntime.Execute(source);
-                _ctsList.TryRemove(jobId, out _);
+                try
+                {
+                    using var scriptRuntime = _scope.Resolve<IScriptEngine>().CreateScriptRuntime(cts.Token);
+                    scriptRuntime.Execute(source);
+                    _ctsList.TryRemove(jobId, out _);
+                }
+                catch (Exception e)
+                {
+                    Logger.LogError(e,"执行脚本报错");
+                }
             }, cts.Token);
             return base.OnStartCommand(intent, flags, startId);
         }

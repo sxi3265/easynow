@@ -7,6 +7,7 @@ using Android.Views.Accessibility;
 using Autofac;
 using EasyNow.App.Droid.Accessibility;
 using EasyNow.App.Droid.Accessibility.Event;
+using Microsoft.Extensions.Logging;
 
 namespace EasyNow.App.Droid.Script.Module
 {
@@ -15,6 +16,7 @@ namespace EasyNow.App.Droid.Script.Module
         private AccessibilityBridge AccessibilityBridge => _scope.Resolve<AccessibilityBridge>();
         private ActivityInfoEvent ActivityInfoEvent => _scope.Resolve<ActivityInfoEvent>();
         private readonly ILifetimeScope _scope;
+        private ILogger Logger => _scope.Resolve<ILogger<UiModule>>();
 
         public UiModule(ILifetimeScope scope)
         {
@@ -68,6 +70,7 @@ namespace EasyNow.App.Droid.Script.Module
             }
             catch(Exception e)
             {
+                Logger.LogError(e,"查找元素时发生错误");
                 return null;
             }
         }

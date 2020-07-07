@@ -4,7 +4,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="accessibility_service_description">EasyNow提供的辅助服务</string>
-    <string name="notification_title">通知标题</string>
-    <string name="notification_content">通知内容</string>
-    <string name="notification_ticker">通知摘要</string>
+    <string name="notification_title">点击打开应用</string>
+    <string name="notification_content">防止应用意外终止</string>
+    <string name="notification_ticker">防止应用意外终止</string>
 </resources>

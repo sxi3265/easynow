@@ -32,6 +32,7 @@ namespace EasyNow.App.Droid.Script.Module
 
         public string Desc => _nodeInfo.ContentDescription;
         public string ClassName => _nodeInfo.ClassName;
+        public string PackageName => _nodeInfo.PackageName;
 
         public Rect BoundsInScreen
         {

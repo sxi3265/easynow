@@ -38,6 +38,40 @@ namespace EasyNow.App.Droid.Script.Module
         }
 
         /// <summary>
+        /// 开启自动化操作
+        /// </summary>
+        /// <param name="timeout"></param>
+        /// <returns></returns>
+        public bool StartAuto(double timeout=60_000)
+        {
+            try
+            {
+                var startTime = DateTime.UtcNow;
+                if (!SettingUtil.IsAccessibilityEnabled(_context))
+                {
+                    UiHandler.SettingAccessibility();
+                    do
+                    {
+                        if (timeout != 0 && (DateTime.UtcNow - startTime).TotalMilliseconds >= timeout)
+                        {
+                            return false;
+                        }
+
+                        Thread.Sleep(2000);
+                    } while (!SettingUtil.IsAccessibilityEnabled(_context));
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e,"开启自动化操作失败");
+                return false;
+            }
+            
+        }
+
+        /// <summary>
         /// 通过应用名称启动应用
         /// </summary>
         /// <param name="appName"></param>
@@ -89,8 +123,12 @@ namespace EasyNow.App.Droid.Script.Module
             try
             {
                 var packageManager = _context.PackageManager;
-                _context.StartActivity(packageManager.GetLaunchIntentForPackage(packageName)
-                    .AddFlags(ActivityFlags.NewTask));
+                var intent = packageManager.GetLaunchIntentForPackage(packageName);
+                if (intent == null)
+                {
+                    return false;
+                }
+                _context.StartActivity(intent.AddFlags(ActivityFlags.NewTask));
                 return true;
             }
             catch (Exception e)
