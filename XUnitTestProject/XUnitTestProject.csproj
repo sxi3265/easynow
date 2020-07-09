@@ -20,4 +20,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EasyNow.Dto\EasyNow.Dto.csproj" />
+    <ProjectReference Include="..\EasyNow.Utility\EasyNow.Utility.csproj" />
+  </ItemGroup>
+
 </Project>
