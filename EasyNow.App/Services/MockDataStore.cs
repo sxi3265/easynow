@@ -77,7 +77,11 @@ namespace EasyNow.App.Services
                     }
                     "
                 },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
+                new Item
+                {
+                    Id = Guid.NewGuid().ToString(), Text = "截图测试", Description="This is an item description.",
+                    Source = @"ui.captureScreen();"
+                },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }

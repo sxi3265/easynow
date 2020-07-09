@@ -3,10 +3,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Android.Content;
 using Android.Views.Accessibility;
 using Autofac;
 using EasyNow.App.Droid.Accessibility;
 using EasyNow.App.Droid.Accessibility.Event;
+using Java.IO;
 using Microsoft.Extensions.Logging;
 
 namespace EasyNow.App.Droid.Script.Module
@@ -67,6 +69,26 @@ namespace EasyNow.App.Droid.Script.Module
             {
                 Logger.LogError(e,"查找元素时发生错误");
                 return null;
+            }
+        }
+
+        public void CaptureScreen()
+        {
+            try
+            {
+                var filePath = _scope.Resolve<Context>().GetExternalFilesDir("pic");
+                var cmd = $"screencap -p {filePath}/test.png";
+                var p = Java.Lang.Runtime.GetRuntime().Exec("su");
+                var outputStream = p.OutputStream;
+                var dataOutputStream = new DataOutputStream(outputStream);
+                dataOutputStream.WriteBytes(cmd);
+                dataOutputStream.Flush();
+                dataOutputStream.Close();
+                outputStream.Close();
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e,"截屏失败");
             }
         }
     }

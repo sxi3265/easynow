@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace EasyNow.Dto
+namespace EasyNow.Dto.Script
 {
-    public class TaskInfo
+    public class ScriptInfo
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Script { get; set; }
+        public string Content { get; set; }
     }
 }

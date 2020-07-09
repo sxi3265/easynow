@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyNow.Dto;
+using EasyNow.Dto.Script;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -13,9 +14,9 @@ namespace EasyNow.Web.Controllers
     public class TaskController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<TaskInfo> GetTaskInfoList()
+        public IEnumerable<ScriptInfo> GetTaskInfoList()
         {
-            return new List<TaskInfo>();
+            return new List<ScriptInfo>();
         }
     }
 }

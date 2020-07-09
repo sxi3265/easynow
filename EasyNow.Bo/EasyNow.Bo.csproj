@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyNow.Dal\EasyNow.Dal.csproj" />
+    <ProjectReference Include="..\EasyNow.Dto\EasyNow.Dto.csproj" />
+    <ProjectReference Include="..\EasyNow.Utility\EasyNow.Utility.csproj" />
+  </ItemGroup>
+
+</Project>
