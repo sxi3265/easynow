@@ -9,8 +9,9 @@ namespace XUnitTestProject
         [Fact]
         public void Test1()
         {
-            var engine = new Engine();
-            var a = engine.Execute("Math.random()").GetCompletionValue().ToString();
+            //var engine = new Engine();
+            //var a = engine.Execute("Math.random()").GetCompletionValue().ToString();
+            
         }
     }
 }

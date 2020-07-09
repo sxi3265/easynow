@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
@@ -14,8 +15,10 @@ using EasyNow.App.Droid.Accessibility;
 using EasyNow.App.Droid.Accessibility.Event;
 using EasyNow.App.Droid.Script;
 using EasyNow.App.Droid.Script.Module;
+using EasyNow.App.Droid.Service;
 using EasyNow.App.Droid.Services;
 using EasyNow.App.Droid.Util;
+using EasyNow.App.Models;
 using EasyNow.App.Services;
 using EasyNow.App.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +26,7 @@ using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Config;
 using NLog.Extensions.Logging;
+using Xamarin.Forms;
 using Logger = EasyNow.App.Services.Logger;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
@@ -39,6 +43,15 @@ namespace EasyNow.App.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+            MessagingCenter.Subscribe<object,Item>(this,"ItemClick", (_,item) =>
+            {
+                var intent = new Intent(this,typeof(ScriptService));
+                intent.PutExtra("ScriptSource", item.Source);
+                this.StartService(intent);
+            });
+            
+            // 捕获全局未处理异常
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
 

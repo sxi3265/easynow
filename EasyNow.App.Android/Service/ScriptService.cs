@@ -2,9 +2,11 @@
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
+using Android.AccessibilityServices;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V4.App;
 using Autofac;
 using EasyNow.App.Droid.Script;
 using Microsoft.Extensions.Logging;
@@ -76,9 +78,21 @@ namespace EasyNow.App.Droid.Service
             return base.StopService(name);
         }
 
-        private Android.App.Notification BuildForegroundNotification() {
-            
-            var builder = new Android.App.Notification.Builder(this,"Script");
+        private Android.App.Notification BuildForegroundNotification()
+        {
+
+            Android.App.Notification.Builder builder;
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            {
+                builder = new Android.App.Notification.Builder(this,"Script");
+            }
+            else
+            {
+                // 兼容8以下设备通知
+#pragma warning disable 618
+                builder = new Android.App.Notification.Builder(this);
+#pragma warning restore 618
+            }
 
             builder.SetOngoing(true);
             builder.SetContentTitle(GetString(Resource.String.notification_title))

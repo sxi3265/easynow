@@ -23,11 +23,6 @@ namespace EasyNow.App.Droid.Script.Module
             _scope = scope;
         }
 
-        public void Init()
-        {
-
-        }
-
         /// <summary>
         /// 当前包名
         /// </summary>
