@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text.Json.Serialization;
 
 namespace EasyNow.Utility.Collection
 {
+    [JsonConverter(typeof(PagedListConverter))]
     public class PagedList<T, TKey> : BasePagedList<T>
     {
         public PagedList(IQueryable<T> queryable, Expression<Func<T, TKey>> keySelector, Pagination page) : this(queryable, keySelector.Compile(), page)
@@ -24,6 +26,7 @@ namespace EasyNow.Utility.Collection
         }
     }
 
+    [JsonConverter(typeof(PagedListConverter))]
     public class PagedList<T> : BasePagedList<T>
     {
         public PagedList(IQueryable<T> queryable, Pagination page) : base(page, queryable?.Count() ?? 0)

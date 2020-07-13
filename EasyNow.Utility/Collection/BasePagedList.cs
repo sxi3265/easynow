@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace EasyNow.Utility.Collection
 {
+    [JsonConverter(typeof(PagedListConverter))]
     public abstract class BasePagedList<T> : PagedListMetaData, IPagedList<T>
     {
         /// <summary>
