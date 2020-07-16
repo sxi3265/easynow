@@ -84,7 +84,9 @@ namespace EasyNow.App.Services
                 },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Test", Description="This is an item description.",
+                    Source = @"app.toast('123');window.setTimeout(function(){app.toast('222')},3000);"
+                }
             };
         }
 

@@ -95,6 +95,7 @@ namespace EasyNow.App.Droid
             builder.RegisterType<UiModule>().SingleInstance();
             builder.RegisterType<UiHandler>().SingleInstance();
             builder.RegisterType<AppModule>().SingleInstance();
+            builder.RegisterType<WindowModule>().SingleInstance();
             builder.RegisterType<DeviceModule>().SingleInstance();
             builder.RegisterInstance(this).Named<Activity>("Main");
             builder.RegisterType<JsScriptEngine>().AsImplementedInterfaces().SingleInstance();

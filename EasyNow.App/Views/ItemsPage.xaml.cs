@@ -28,7 +28,7 @@ namespace EasyNow.App.Views
             BindingContext = viewModel = DependencyService.Resolve<ItemsViewModel>();
         }
 
-        async void OnItemSelected(object sender, EventArgs args)
+        void OnItemSelected(object sender, EventArgs args)
         {
             var layout = (BindableObject)sender;
             var item = (Item)layout.BindingContext;

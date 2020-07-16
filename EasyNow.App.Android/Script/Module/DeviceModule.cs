@@ -5,6 +5,7 @@ using EasyNow.App.Droid.Accessibility;
 
 namespace EasyNow.App.Droid.Script.Module
 {
+
     public class DeviceModule
     {
         private readonly ILifetimeScope _scope;
@@ -13,11 +14,6 @@ namespace EasyNow.App.Droid.Script.Module
         public DeviceModule(ILifetimeScope scope)
         {
             _scope = scope;
-        }
-
-        public void WaitAuto()
-        {
-
         }
 
         public void Touch(double x, double y, double duration=10)
