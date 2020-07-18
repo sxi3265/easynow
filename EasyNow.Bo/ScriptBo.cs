@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autofac;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using EasyNow.Bo.Abstractions;
 using EasyNow.Dto.Script;
@@ -15,7 +17,7 @@ namespace EasyNow.Bo
         {
             var query = Db.Script.AsNoTracking()
                 .WhereIf(!string.IsNullOrEmpty(model.Name), e => e.Name.Contains(model.Name));
-            throw new NotImplementedException();
+            return query.ProjectTo<ScriptInfo>(Scope.Resolve<IConfigurationProvider>()).AsEnumerable();
         }
     }
 }

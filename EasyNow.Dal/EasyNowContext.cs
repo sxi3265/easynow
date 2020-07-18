@@ -11,7 +11,7 @@ namespace EasyNow.Dal
     {
         private readonly ILifetimeScope _scope;
 
-        public EasyNowContext(ILifetimeScope scope)
+        public EasyNowContext(ILifetimeScope scope,DbContextOptions options):base(options)
         {
             _scope = scope;
         }

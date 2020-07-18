@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyNow.Dto\EasyNow.Dto.csproj" />
+    <ProjectReference Include="..\EasyNow.Bo\EasyNow.Bo.csproj" />
   </ItemGroup>
 
 
