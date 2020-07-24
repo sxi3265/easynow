@@ -9,9 +9,11 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.2" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="5.1.67" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EasyNow.ApiClient\EasyNow.ApiClient.csproj" />
     <ProjectReference Include="..\EasyNow.Dto\EasyNow.Dto.csproj" />
   </ItemGroup>
 

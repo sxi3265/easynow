@@ -10,7 +10,7 @@
         public string Summary { get; set; }
         public ContentType ContentType { get; set; }
         public int[] TopicIds { get; set; }
-        public string Uids { get; set; }
+        public string[] Uids { get; set; }
         public string Url { get; set; }
     }
 }

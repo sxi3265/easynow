@@ -14,6 +14,13 @@ namespace XUnitTestProject
     public class UnitTest1
     {
         [Fact]
+        public void Test2()
+        {
+            var jdoc = JsonDocument.Parse(
+                "{\"type\":\"hello\",\"data\":{\"device_name\":\"Xiaomi Mi 10\",\"app_version\":\"4.1.1 Alpha2\",\"app_version_code\":461,\"client_version\":2}}");
+        }
+
+        [Fact]
         public void Test1()
         {
             var pagedList = new PagedList<ScriptInfo>(new []{new ScriptInfo
