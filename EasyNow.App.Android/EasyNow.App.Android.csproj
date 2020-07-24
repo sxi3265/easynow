@@ -44,6 +44,12 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>D:\文档\个人\开发\Android\easynow.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>sbxaialhjA3.</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>easynow</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>sbxaialhjA3.</AndroidSigningKeyPass>
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />

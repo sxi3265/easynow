@@ -20,7 +20,6 @@ namespace EasyNow.App.Services
                     Source = @"app.startAuto();
                 app.launchApp('com.ophone.reader.ui');
                 app.toast('等待首页搜索');
-                var aa=ui.wait(function(node){return node.id=='android.miui:id/app1';})
                 app.toast('包名:'+ui.currentPackageName+' Activity:'+ui.currentActivity);
                 var node=ui.wait(function(node){return node.id=='com.ophone.reader.ui:id/btn_bookshelf_search'||node.id=='com.ophone.reader.ui:id/recom_btn_search';});
                 node.click();
