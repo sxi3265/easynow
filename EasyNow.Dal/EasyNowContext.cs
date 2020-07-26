@@ -11,7 +11,7 @@ namespace EasyNow.Dal
     {
         private readonly ILifetimeScope _scope;
 
-        public EasyNowContext(ILifetimeScope scope)
+        public EasyNowContext(ILifetimeScope scope,DbContextOptions<EasyNowContext> options):base(options)
         {
             _scope = scope;
         }
@@ -19,6 +19,7 @@ namespace EasyNow.Dal
         public DbSet<User> User { get; set; }
         public DbSet<Script> Script { get; set; }
         public DbSet<UserScript> UserScript { get; set; }
+        public DbSet<Device> Device { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

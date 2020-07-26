@@ -6,9 +6,16 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using EasyNow.Bo;
+using EasyNow.Dal;
+using EasyNow.Utility.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -16,15 +23,41 @@ namespace EasyNow.AutoJsServer
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        public ILifetimeScope AutofacContainer { get; private set; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddWebSocketManager();
+            services.AddDbContext<EasyNowContext>(builder =>
+            {
+                builder.UseMySql("Server=127.0.0.1;Database=AutoJs;Uid=root;Pwd=123456;");
+            });
+            services.AddHttpContextAccessor();
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule<DalModule>();
+            builder.RegisterModule<BoModule>();
+            builder.RegisterAutoMapper(this.GetType().Assembly, typeof(DalModule).Assembly, typeof(BoModule).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+
+            var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            var serviceProvider = serviceScopeFactory.CreateScope().ServiceProvider;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -38,26 +71,8 @@ namespace EasyNow.AutoJsServer
 
             app.UseWebSockets(webSocketOptions);
 
-            app.Use(async (context, next) =>
-            {
-                if (context.Request.Path == "/")
-                {
-                    if (context.WebSockets.IsWebSocketRequest)
-                    {
-                        WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                        await Echo(context, webSocket);
-                    }
-                    else
-                    {
-                        context.Response.StatusCode = 400;
-                    }
-                }
-                else
-                {
-                    await next();
-                }
-
-            });
+            app.MapWebSocketManager(PathString.Empty,serviceProvider.GetService<AutoJsHandler>());
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -68,22 +83,6 @@ namespace EasyNow.AutoJsServer
                     await context.Response.WriteAsync("Hello World!");
                 });
             });
-        }
-
-        private async Task Echo(HttpContext context, WebSocket webSocket)
-        {
-            var buffer = new byte[1024 * 4];
-            WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-            var a = Encoding.UTF8.GetString(buffer,0,result.Count);
-            var b=JsonSerializer.Deserialize<JsonElement>(a);
-            buffer = Encoding.UTF8.GetBytes("{\"type\":\"hello\",\"data\":{\"server_version\":2}}");
-
-            while (!result.CloseStatus.HasValue)
-            {
-                await webSocket.SendAsync(new ArraySegment<byte>(buffer, 0, buffer.Length), result.MessageType, result.EndOfMessage, CancellationToken.None);
-                result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-            }
-            await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, CancellationToken.None);
         }
     }
 }

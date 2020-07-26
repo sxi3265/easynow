@@ -5,7 +5,7 @@ namespace EasyNow.Bo
 {
     public abstract class BaseBo
     {
-        protected ILifetimeScope Scope;
+        public ILifetimeScope Scope { get; set; }
         protected virtual EasyNowContext Db => Scope.Resolve<EasyNowContext>();
     }
 }

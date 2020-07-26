@@ -1,0 +1,47 @@
+﻿@page "/script/list"
+@using EasyNow.Dto.Script
+
+<PageContainer Breadcrumb="Breadcrumb">
+    <Card>
+        <Table @ref="table"
+               DataSource="@_datas"
+               Total="_total"
+               @bind-PageIndex="_pageIndex"
+               @bind-PageSize="_pageSize"
+               OnPageIndexChange="async e=>await fetchData(e)">
+            <Selection Key="@(context.Id.ToString())" />
+            <Column @bind-Field="@context.Code" Sortable />
+            <Column @bind-Field="@context.Name" Sortable />
+        </Table>
+    </Card>
+</PageContainer>
+
+
+@code {
+
+public RenderFragment Breadcrumb =@<Breadcrumb>
+    <BreadcrumbItem>
+        Home
+    </BreadcrumbItem>
+    <BreadcrumbItem>
+        Script
+    </BreadcrumbItem>
+    <BreadcrumbItem>
+        List
+    </BreadcrumbItem>
+</Breadcrumb>;
+
+        ScriptInfo[] _datas;
+
+        ITable table;
+
+        int _pageIndex = 1;
+        int _pageSize = 10;
+        int _total = 0;
+
+        async Task fetchData(PaginationEventArgs args)
+        {
+            //forecasts = await GetForecastAsync(args.PageIndex, args.PageSize);
+        }
+
+    }

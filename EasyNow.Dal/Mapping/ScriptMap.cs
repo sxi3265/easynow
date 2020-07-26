@@ -12,7 +12,8 @@ namespace EasyNow.Dal.Mapping
             base.Map(builder);
             builder.ToTable("Script");
             builder.Property(t => t.Name).HasColumnType("nvarchar(100)").IsRequired();
-            builder.Property(t => t.Content).HasColumnType("text").IsRequired();
+            builder.Property(t => t.Code).HasColumnType("varchar(200)").IsRequired();
+            builder.Property(t => t.Content).HasColumnType("blob").IsRequired();
         }
     }
 }
