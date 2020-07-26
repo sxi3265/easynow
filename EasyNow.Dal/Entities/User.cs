@@ -9,5 +9,6 @@ namespace EasyNow.Dal.Entities
         public string Password { get; set; }
 
         public virtual ICollection<UserScript> UserScripts { get; set; }
+        public virtual ICollection<UserDevice> UserDevices { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Newtonsoft.Json;
 
 namespace EasyNow.Utility.Collection
 {
@@ -26,6 +27,12 @@ namespace EasyNow.Utility.Collection
 
     public class PagedList<T> : BasePagedList<T>
     {
+        [JsonConstructor]
+        public PagedList(int pageNumber,int pageSize,IEnumerable<T> items,int totalItemCount):this(items,new Pagination{PageNumber = pageNumber,PageSize = pageSize},totalItemCount)
+        {
+            
+        }
+
         public PagedList(IQueryable<T> queryable, Pagination page) : base(page, queryable?.Count() ?? 0)
         {
             if (TotalItemCount > 0)

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EasyNow.Dal.Entities;
 using EasyNow.Dto.Device;
+using EasyNow.Dto.Script;
 
 namespace EasyNow.Bo.Profiles
 {
@@ -9,6 +10,7 @@ namespace EasyNow.Bo.Profiles
         public BasicProfile()
         {
             this.CreateMap<Device, DeviceDto>().ReverseMap();
+            this.CreateMap<Script, ScriptInfo>().ReverseMap();
         }
     }
 }

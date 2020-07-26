@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper.QueryableExtensions;
-using EasyNow.Bo.Abstractions;
+﻿using EasyNow.Bo.Abstractions;
+using EasyNow.Dal.Entities;
 using EasyNow.Dto.Script;
+using EasyNow.Utility.Collection;
 using EasyNow.Utility.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace EasyNow.Bo
 {
     public class ScriptBo:BaseBo,IScriptBo
     {
-        public IEnumerable<ScriptInfo> Query(ScriptQueryModel model)
+        public Task<IPagedList<ScriptInfo>> QueryAsync(ScriptQueryModel model)
         {
             var query = Db.Script.AsNoTracking()
                 .WhereIf(!string.IsNullOrEmpty(model.Name), e => e.Name.Contains(model.Name));
-            throw new NotImplementedException();
+            return Task.FromResult(query.ToPagedList<Script, ScriptInfo>(model));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace EasyNow.ApiClient
+﻿namespace EasyNow.Dto
 {
     public class Result
     {

@@ -1,5 +1,6 @@
 ﻿@page "/script/list"
 @using EasyNow.Dto.Script
+@inject EasyNow.ApiClient.IEasyNowApi ApiClient
 
 <PageContainer Breadcrumb="Breadcrumb">
     <Card>
@@ -12,6 +13,13 @@
             <Selection Key="@(context.Id.ToString())" />
             <Column @bind-Field="@context.Code" Sortable />
             <Column @bind-Field="@context.Name" Sortable />
+            <ActionColumn Title="Acton">
+                <Space Size="middle">
+                    <SpaceItem>
+                        <Button Type="button" OnClick="()=>onRun(context)">运行</Button>
+                    </SpaceItem>
+                </Space>
+            </ActionColumn>
         </Table>
     </Card>
 </PageContainer>
@@ -31,17 +39,38 @@ public RenderFragment Breadcrumb =@<Breadcrumb>
     </BreadcrumbItem>
 </Breadcrumb>;
 
-        ScriptInfo[] _datas;
+    List<ScriptInfo> _datas;
 
-        ITable table;
+    ITable table;
+    int _pageIndex = 1;
+    int _pageSize = 10;
+    int _total = 0;
 
-        int _pageIndex = 1;
-        int _pageSize = 10;
-        int _total = 0;
-
-        async Task fetchData(PaginationEventArgs args)
+    protected override async Task OnParametersSetAsync()
+    {
+        var result = await ApiClient.QueryScript(new ScriptQueryModel{
+            PageSize=20,
+            PageNumber=1
+        });
+        if (result.Code == 0)
         {
-            //forecasts = await GetForecastAsync(args.PageIndex, args.PageSize);
+            this._total = result.Data.TotalItemCount;
+            this._pageIndex = result.Data.PageNumber;
+            this._pageSize = result.Data.PageSize;
+            this._datas = result.Data.Items;
         }
+    }
 
+    async Task fetchData(PaginationEventArgs args)
+    {
+        _datas=(await ApiClient.QueryScript(new ScriptQueryModel{
+            PageNumber=args.PageIndex,
+            PageSize=args.PageSize
+        })).Data.Items;
+    }
+
+    void onRun(ScriptInfo scriptInfo)
+    {
+
+    }
     }

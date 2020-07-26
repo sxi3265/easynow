@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EasyNow.Dto;
 using Refit;
 
 namespace EasyNow.ApiClient.WxPusher

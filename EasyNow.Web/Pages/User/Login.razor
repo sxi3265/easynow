@@ -43,15 +43,15 @@
         </FormItem>
 
         <FormItem>
-            <Button Type="primary" Size="large" Block OnClick="NavLogin">登录</Button>
+            <Button Type="primary" Size="large" Block OnClick="async ()=>await UserLogin()">登录</Button>
         </FormItem>
     </Form>
 
     <div class="other">
-        其它方式
+        @*其它方式
         <Icon Type="alipay-circle" />
         <Icon Type="taobao-circle" />
-        <Icon Type="weibo-circle" />
+        <Icon Type="weibo-circle" />*@
         <a class="register" href="/user/register">注册</a>
     </div>
 </div>

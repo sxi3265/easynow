@@ -20,6 +20,7 @@ namespace EasyNow.Dal
         public DbSet<Script> Script { get; set; }
         public DbSet<UserScript> UserScript { get; set; }
         public DbSet<Device> Device { get; set; }
+        public DbSet<UserDevice> UserDevice { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
