@@ -50,7 +50,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Watch Remove="Pages\Script\List.razor" />
 	  <Watch Remove="styles\global.less" />
 	  <Watch Remove="styles\index.less" />
 	  <Watch Remove="node_modules\**\*" />

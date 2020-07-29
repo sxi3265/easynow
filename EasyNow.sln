@@ -35,7 +35,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.AutoJsServer", "Eas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Web", "EasyNow.Web\EasyNow.Web.csproj", "{58766AFE-08A2-4C8B-BA61-376CCD40B438}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.Api", "EasyNow.Api\EasyNow.Api.csproj", "{5AE74C16-1A85-4777-B9E4-25503BD989DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Api", "EasyNow.Api\EasyNow.Api.csproj", "{5AE74C16-1A85-4777-B9E4-25503BD989DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{F8DA212B-F9D5-4E9D-9AAC-820BBAC11669}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		nginx.conf = nginx.conf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
