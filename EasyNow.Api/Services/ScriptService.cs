@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using EasyNow.Bo.Abstractions;
 using EasyNow.Dto.Script;
 using EasyNow.Utility.Extensions;

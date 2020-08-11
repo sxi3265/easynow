@@ -1,0 +1,393 @@
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">EasyNow.Admin.Web</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Syncfusion Blazor Samples
+            </NavLink>
+        </li>
+    </ul>
+ <div class="separator"></div>
+    <div class="scroller">
+       <ul class="nav flex-column">
+       			<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="datagrid-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-datagrid" aria-hidden="true"></span>DataGrid
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="pivottable-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-pivottable" aria-hidden="true"></span>Pivot Table
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="treegrid-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-treegrid" aria-hidden="true"></span>Tree Grid
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="charts-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-charts" aria-hidden="true"></span>Charts
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="stockchart-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-stockchart" aria-hidden="true"></span>Stock Chart
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="circulargauge-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-circulargauge" aria-hidden="true"></span>Circular Gauge
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="diagram-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-diagram" aria-hidden="true"></span>Diagram
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="heatmapchart-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-heatmapchart" aria-hidden="true"></span>HeatMap Chart
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="lineargauge-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-lineargauge" aria-hidden="true"></span>Linear Gauge
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="maps-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-maps" aria-hidden="true"></span>Maps
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="rangeselector-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-rangeselector" aria-hidden="true"></span>Range Selector
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="smithchart-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-smithchart" aria-hidden="true"></span>Smith Chart
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="barcodegenerator-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-barcodegenerator" aria-hidden="true"></span>Barcode Generator
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="sparklinecharts-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-sparklinecharts" aria-hidden="true"></span>Sparkline Charts
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="treemap-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-treemap" aria-hidden="true"></span>TreeMap
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="bulletchart-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-bulletchart" aria-hidden="true"></span>Bullet Chart
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="kanban-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-kanban" aria-hidden="true"></span>Kanban
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="progressbar-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-progressbar" aria-hidden="true"></span>ProgressBar
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="pdfviewer-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-pdfviewer" aria-hidden="true"></span>PDF Viewer
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="richtexteditor-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-richtexteditor" aria-hidden="true"></span>Rich Text Editor
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="wordprocessor-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-wordprocessor" aria-hidden="true"></span>Word Processor
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="inplaceeditor-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-inplaceeditor" aria-hidden="true"></span>In-place Editor
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="scheduler-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-scheduler" aria-hidden="true"></span>Scheduler
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="calendar-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-calendar" aria-hidden="true"></span>Calendar
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="datepicker-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-datepicker" aria-hidden="true"></span>DatePicker
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="daterangepicker-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-daterangepicker" aria-hidden="true"></span>DateRangePicker
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="datetimepicker-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-datetimepicker" aria-hidden="true"></span>DateTime Picker
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="timepicker-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-timepicker" aria-hidden="true"></span>TimePicker
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="ganttchart-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-ganttchart" aria-hidden="true"></span>Gantt Chart
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="autocomplete-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-autocomplete" aria-hidden="true"></span>AutoComplete
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="combobox-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-combobox" aria-hidden="true"></span>ComboBox
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="dropdownlist-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-dropdownlist" aria-hidden="true"></span>Dropdown List
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="multiselectdropdown-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-multiselectdropdown" aria-hidden="true"></span>MultiSelect Dropdown
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="listbox-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-listbox" aria-hidden="true"></span>ListBox
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="dialog-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-dialog" aria-hidden="true"></span>Dialog
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="listview-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-listview" aria-hidden="true"></span>ListView
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="tooltip-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-tooltip" aria-hidden="true"></span>Tooltip
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="splitter-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-splitter" aria-hidden="true"></span>Splitter
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="dashboardlayout-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-dashboardlayout" aria-hidden="true"></span>Dashboard Layout
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="card-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-card" aria-hidden="true"></span>Card
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="textbox-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-textbox" aria-hidden="true"></span>TextBox
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="inputmask-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-inputmask" aria-hidden="true"></span>Input Mask
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="numerictextbox-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-numerictextbox" aria-hidden="true"></span>Numeric TextBox
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="radiobutton-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-radiobutton" aria-hidden="true"></span>Radio Button
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="checkbox-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-checkbox" aria-hidden="true"></span>Checkbox
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="colorpicker-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-colorpicker" aria-hidden="true"></span>Color Picker
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="fileupload-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-fileupload" aria-hidden="true"></span>File Upload
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="rangeslider-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-rangeslider" aria-hidden="true"></span>Range Slider
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="toggleswitchbutton-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-toggleswitchbutton" aria-hidden="true"></span>Toggle Switch Button
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="accordion-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-accordion" aria-hidden="true"></span>Accordion
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="contextmenu-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-contextmenu" aria-hidden="true"></span>Context Menu
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="menubar-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-menubar" aria-hidden="true"></span>Menu Bar
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="sidebar-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-sidebar" aria-hidden="true"></span>Sidebar
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="tabs-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-tabs" aria-hidden="true"></span>Tabs
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="toolbar-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-toolbar" aria-hidden="true"></span>Toolbar
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="treeview-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-treeview" aria-hidden="true"></span>TreeView
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="filemanager-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-filemanager" aria-hidden="true"></span>File Manager
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="button-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-button" aria-hidden="true"></span>Button
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="dropdownmenu-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-dropdownmenu" aria-hidden="true"></span>Dropdown Menu
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="progressbutton-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-progressbutton" aria-hidden="true"></span>Progress Button
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="toast-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-toast" aria-hidden="true"></span>Toast
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="querybuilder-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-querybuilder" aria-hidden="true"></span>Query Builder
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="excel-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-excel" aria-hidden="true"></span>Excel
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="pdf-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-pdf" aria-hidden="true"></span>PDF
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="word-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-word" aria-hidden="true"></span>Word
+ 	</NavLink>
+ 	</li>
+	<li class="nav-item px-3">
+ 	<NavLink class="nav-link" href="powerpoint-features">
+ 	<span class="syncfusion-blazor-icons syncfusion-blazor-icon-powerpoint" aria-hidden="true"></span>PowerPoint
+ 	</NavLink>
+ 	</li>
+
+       </ul>
+    </div>
+</div>
+ <style>
+        .scroller {
+            height: calc(100vh - 160px) !important;
+            overflow-y: auto;
+            width:287px;
+        }
+
+            .scroller::-webkit-scrollbar, scrollbar-thumb
+            .scroller::-webkit-scrollbar-thumb {
+                width: 8px;
+                height: 110px;
+                border-radius: 4px;
+                position: center;
+            }
+
+            .scroller::-webkit-scrollbar-thumb {
+                box-shadow: inset 0 0 0 10px #313C75;
+                border-radius: 4px;
+            }
+
+            .scroller::-webkit-scrollbar-track {
+                width: 28px;
+            }
+	    .separator{
+           border:1px solid #FFFFFF;
+           opacity:0.14;
+           width:247px;
+           margin:1rem;
+           margin-top:0px;
+        }
+    </style>
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

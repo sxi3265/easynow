@@ -1,4 +1,4 @@
-﻿namespace EasyNow.Dal.Entities
+namespace EasyNow.Dal.Entities
 {
     public enum DeviceStatus
     {

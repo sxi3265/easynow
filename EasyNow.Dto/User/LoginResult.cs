@@ -1,4 +1,4 @@
-﻿namespace EasyNow.Dto.User
+namespace EasyNow.Dto.User
 {
     public class LoginResult
     {

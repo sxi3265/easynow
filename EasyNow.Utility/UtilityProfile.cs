@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using AutoMapper;
 using EasyNow.Utility.Extensions;

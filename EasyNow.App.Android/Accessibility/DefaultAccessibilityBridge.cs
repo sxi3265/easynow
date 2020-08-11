@@ -1,4 +1,4 @@
-﻿namespace EasyNow.App.Droid.Accessibility
+namespace EasyNow.App.Droid.Accessibility
 {
     public class DefaultAccessibilityBridge:AccessibilityBridge
     {

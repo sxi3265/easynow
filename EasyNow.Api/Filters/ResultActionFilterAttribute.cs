@@ -1,4 +1,4 @@
-﻿using EasyNow.Dal;
+using EasyNow.Dal;
 using EasyNow.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;

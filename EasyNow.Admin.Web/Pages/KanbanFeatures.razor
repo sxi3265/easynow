@@ -1,0 +1,53 @@
+@page "/kanban-features"
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Kanban
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+@using EasyNow.Admin.Web.Data
+<h2>Kanban</h2>
+<br/>
+<div id = "ControlRegion">
+<div class="control-section">
+    <SfKanban KeyField="Status" DataSource="Tasks" EnableTooltip="true">
+        <KanbanColumns>
+            <KanbanColumn HeaderText="To Do" KeyField="Open" AllowToggle="true" ></KanbanColumn>
+            <KanbanColumn HeaderText="In Progress" KeyField="InProgress" AllowToggle="true"></KanbanColumn>
+            <KanbanColumn HeaderText="Testing" KeyField="Testing" AllowToggle="true"></KanbanColumn> 
+            <KanbanColumn HeaderText="Done" KeyField="Close" AllowToggle="true"></KanbanColumn>
+        </KanbanColumns>
+        <KanbanCardSettings HeaderField="Id" ContentField="Summary"></KanbanCardSettings>
+		  <KanbanSwimlaneSettings KeyField="Assignee" AllowDragAndDrop="false" ShowItemCount="true" SortDirection=SortDirection.Ascending></KanbanSwimlaneSettings>
+    </SfKanban>
+</div>
+</div>
+<br/>
+<div>
+  <h3>Selected Features:</h3>
+    <ul class="ulstyle">
+      <li class="list"> Kanban Samples - Default</li>
+      <li class="list"> Toggle Columns</li>
+      <li class="list"> Tooltip Template</li>
+      <li class="list"> Enable Swimlane</li>
+      <li class="list"> Theme - Material</li>
+    </ul>
+</div>
+<br/>
+<style>
+    .ulstyle {
+        margin: 0px;
+        padding-left: 20px;
+        display: inline-block;
+    }
+    .list {
+    float: left;
+    line-height: 20px;
+    margin: 10px;
+    min-width: 290px;
+    }
+</style>
+@code {
+    private List<KanbanDataModels> Tasks = new KanbanDataModels().GetTasks();
+    private SortDirection sortType { get; set; } = SortDirection.Ascending;
+    private bool allowDragAndDrop { get; set; } = false;
+    private bool showItemCount { get; set; } = true;
+}

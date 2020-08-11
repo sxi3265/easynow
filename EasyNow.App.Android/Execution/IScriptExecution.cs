@@ -1,4 +1,4 @@
-﻿namespace EasyNow.App.Droid.Execution
+namespace EasyNow.App.Droid.Execution
 {
     public interface IScriptExecution
     {

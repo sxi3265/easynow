@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Android.App.Usage;
 using Android.Content;

@@ -58,7 +58,7 @@ namespace XUnitTestProject
                 {
                     if (reader.TokenType != JsonTokenType.StartObject)
                     {
-                        throw new JsonException("²»ÊÇÒ»¸ö¶ÔÏó");
+                        throw new JsonException("ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     }
 
                     return null;

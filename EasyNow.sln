@@ -41,7 +41,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{F8DA212B
 		nginx.conf = nginx.conf
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.Web", "EasyNow.Web\EasyNow.Web.csproj", "{C55DCA1B-5A41-4E9E-A0F5-C395358187E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Web", "EasyNow.Web\EasyNow.Web.csproj", "{C55DCA1B-5A41-4E9E-A0F5-C395358187E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.Admin.Web", "EasyNow.Admin.Web\EasyNow.Admin.Web.csproj", "{FDC7782A-6104-47D0-9270-CAEE9E22231F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -225,6 +227,18 @@ Global
 		{C55DCA1B-5A41-4E9E-A0F5-C395358187E7}.Release|iPhone.Build.0 = Release|Any CPU
 		{C55DCA1B-5A41-4E9E-A0F5-C395358187E7}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{C55DCA1B-5A41-4E9E-A0F5-C395358187E7}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Release|iPhone.Build.0 = Release|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{FDC7782A-6104-47D0-9270-CAEE9E22231F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

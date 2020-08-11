@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using EasyNow.Dal;
 using EasyNow.Dto;
 using EasyNow.Utility.Exceptions;

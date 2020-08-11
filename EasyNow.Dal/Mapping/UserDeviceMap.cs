@@ -1,4 +1,4 @@
-﻿using EasyNow.Dal.Entities;
+using EasyNow.Dal.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

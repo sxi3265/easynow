@@ -1,4 +1,4 @@
-﻿namespace EasyNow.Utility.Collection
+namespace EasyNow.Utility.Collection
 {
     public class PagedListMetaData : IPagedList
     {

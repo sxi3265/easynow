@@ -1,4 +1,4 @@
-﻿namespace EasyNow.App.Services
+namespace EasyNow.App.Services
 {
     public interface ILogger
     {

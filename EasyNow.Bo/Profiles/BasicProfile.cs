@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using EasyNow.Dal.Entities;
 using EasyNow.Dto.Device;
 using EasyNow.Dto.Script;

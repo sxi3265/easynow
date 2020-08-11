@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using EasyNow.ApiClient.WxPusher;
 using Microsoft.Extensions.DependencyInjection;

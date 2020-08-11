@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AutoMapper;
 using EasyNow.Utility.Tools;
 using Newtonsoft.Json;

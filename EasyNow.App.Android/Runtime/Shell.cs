@@ -1,4 +1,4 @@
-﻿using Android.Content;
+using Android.Content;
 using EasyNow.App.Droid.Runtime.Api;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;

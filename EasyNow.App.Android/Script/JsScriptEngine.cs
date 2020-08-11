@@ -1,4 +1,4 @@
-﻿using System.Threading;
+using System.Threading;
 using Autofac;
 using EasyNow.App.Droid.Script.Module;
 using Jint;

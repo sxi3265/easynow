@@ -1,4 +1,4 @@
-﻿using Android.Content;
+using Android.Content;
 using Android.Net;
 using Android.Provider;
 using Java.IO;

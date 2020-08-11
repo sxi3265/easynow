@@ -1,4 +1,4 @@
-﻿namespace EasyNow.ApiClient.WxPusher
+namespace EasyNow.ApiClient.WxPusher
 {
     public class QrCodeResp
     {

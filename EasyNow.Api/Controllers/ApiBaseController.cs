@@ -1,4 +1,4 @@
-﻿using Autofac;
+using Autofac;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

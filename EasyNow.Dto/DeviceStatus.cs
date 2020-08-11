@@ -1,4 +1,4 @@
-﻿namespace EasyNow.Dto
+namespace EasyNow.Dto
 {
     public enum DeviceStatus
     {

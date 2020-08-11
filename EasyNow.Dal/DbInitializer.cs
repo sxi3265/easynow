@@ -1,4 +1,4 @@
-﻿using Autofac;
+using Autofac;
 using EasyNow.Dal.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;

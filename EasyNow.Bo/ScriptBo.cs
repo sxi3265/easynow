@@ -1,4 +1,4 @@
-﻿using EasyNow.Bo.Abstractions;
+using EasyNow.Bo.Abstractions;
 using EasyNow.Dal.Entities;
 using EasyNow.Dto.Script;
 using EasyNow.Utility.Collection;

@@ -1,4 +1,4 @@
-﻿using EasyNow.Utility.Collection;
+using EasyNow.Utility.Collection;
 
 namespace EasyNow.Dto.Script
 {
