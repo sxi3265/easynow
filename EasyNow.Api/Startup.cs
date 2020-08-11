@@ -7,6 +7,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper.Internal;
 using EasyNow.Api.Filters;
+using EasyNow.Api.Services;
 using EasyNow.Bo;
 using EasyNow.Dal;
 using EasyNow.Utility.Extensions;
@@ -56,21 +57,22 @@ namespace EasyNow.Api
                 };
             });
 
-            services.AddControllers(opts =>
-            {
-                opts.Filters.Add<GlobalExceptionFilter>();
-                opts.Filters.Add<ResultActionFilterAttribute>();
-            }).AddControllersAsServices().AddNewtonsoftJson(opts =>
-            {
-                JsonTool.JsonSerializerSettings.CopyTo(opts.SerializerSettings);
-            });
-            services.AddApiVersioning();
+            //services.AddControllers(opts =>
+            //{
+            //    opts.Filters.Add<GlobalExceptionFilter>();
+            //    opts.Filters.Add<ResultActionFilterAttribute>();
+            //}).AddControllersAsServices().AddNewtonsoftJson(opts =>
+            //{
+            //    JsonTool.JsonSerializerSettings.CopyTo(opts.SerializerSettings);
+            //});
+            //services.AddApiVersioning();
             services.AddDbContext<EasyNowContext>(builder =>
             {
                 builder.UseMySql("Server=127.0.0.1;Database=AutoJs;Uid=root;Pwd=123456;");
             });
             services.AddHttpContextAccessor();
             services.AddCors();
+            services.AddGrpc();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -99,7 +101,8 @@ namespace EasyNow.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapGrpcService<ScriptService>();
+                //endpoints.MapControllers();   
             });
         }
     }
