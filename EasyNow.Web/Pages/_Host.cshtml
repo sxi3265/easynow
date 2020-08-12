@@ -12,27 +12,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EasyNow.Web</title>
     <base href="~/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link href="css/site.css" rel="stylesheet" />
-    <link href="_content/AntDesign/css/ant-design-blazor.css" rel="stylesheet">
+    <link href="_content/AntDesign/css/ant-design-blazor.css" rel="stylesheet" />
+    <link href="_content/AntDesign.Pro.Layout/css/prolayout.css" rel="stylesheet" />
+    <link href="./css/site.css" rel="stylesheet" />
 </head>
 <body>
-    <app style="height:100vh;">
-        <component type="typeof(App)" render-mode="ServerPrerendered" />
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.Server))
     </app>
-
-    <div id="blazor-error-ui">
-        <environment include="Staging,Production">
-            An error has occurred. This application may no longer respond until reloaded.
-        </environment>
-        <environment include="Development">
-            An unhandled exception has occurred. See browser dev tools for details.
-        </environment>
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>
 
     <script src="_framework/blazor.server.js"></script>
     <script src="_content/AntDesign/js/ant-design-blazor.js"></script>
+    <script src="https://gw.alipayobjects.com/os/lib/antv/g2/4.0.10/dist/g2.min.js"></script>
+    <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.11.1/dist/data-set.js"></script>
+    <script src="./js/ant-pro.js"></script>
 </body>
 </html>

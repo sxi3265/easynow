@@ -40,13 +40,10 @@ namespace EasyNow.Admin.Web
                 var supportedCultures = new List<CultureInfo>()
                 {
                     new CultureInfo("en-US"),
-                    new CultureInfo("de"),
-                    new CultureInfo("fr"),
-                    new CultureInfo("ar"),
-                    new CultureInfo("zh"),
+                    new CultureInfo("zh-CN"),
                 };
                     // Set the default culture
-                    options.DefaultRequestCulture = new RequestCulture("en-US");
+                    options.DefaultRequestCulture = new RequestCulture("zh-CN");
                     options.SupportedCultures = supportedCultures;
                     options.SupportedUICultures = supportedCultures;
                 }); 

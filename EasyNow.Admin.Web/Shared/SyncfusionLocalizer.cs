@@ -15,12 +15,6 @@ namespace EasyNow.Admin.Web.Shared
 
         // To access the resource file and get the exact value for locale key
 
-        public System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                return EasyNow.Admin.Web.Resources.SfResources.ResourceManager;
-            }
-        }
+        public System.Resources.ResourceManager ResourceManager => EasyNow.Admin.Web.Resources.SfResources.ResourceManager;
     }
 }
