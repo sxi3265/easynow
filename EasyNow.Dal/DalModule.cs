@@ -1,5 +1,4 @@
 using Autofac;
-using EasyNow.Dal.Mapping;
 
 namespace EasyNow.Dal
 {
@@ -7,8 +6,7 @@ namespace EasyNow.Dal
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(this.GetType().Assembly).AssignableTo<IMap>()
-                .Where(e => !e.IsAbstract).AsImplementedInterfaces().SingleInstance();
+            
         }
     }
 }
