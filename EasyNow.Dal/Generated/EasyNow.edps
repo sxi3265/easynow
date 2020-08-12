@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EntityDeveloper Version="6.6.936.0">
   <ModelSettings xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" AppConnectionStringName="easynowModelConnectionString" ConnectionStringInAppConfig="False" TargetFramework="NetCore20" DetectManyToManyAssociations="False" DetectTPTInheritance="False" DefaultLength="200" DefaultUnicode="True" EntityFrameworkCoreVersion="Version3" ShadowForeignKeyProperties="True" DetectFunctionBasedColumnDefault="True">
-    <Connection ConnectionString="persistsecurityinfo=True;server=106.55.16.128;port=30000;user id=root;password=sbxaialhj;database=EasyNow" Provider="MySql.Data.MySqlClient" />
+    <Connection ConnectionString="persistsecurityinfo=True;server=mysql.20666666.xyz;port=30000;user id=root;password=sbxaialhj;database=EasyNow" Provider="MySql.Data.MySqlClient" />
     <Generation>
       <GeneratedFiles>
         <File Name="EasyNowContext.cs" />
@@ -17,6 +17,7 @@
         <File Name="Service.cs" />
         <File Name="ServiceCategory.cs" />
         <File Name="UserService.cs" />
+        <File Name="AutoJsService.cs" />
         <File Name="DeviceStatus.cs" />
         <File Name="User.Configuration.cs" />
         <File Name="Role.Configuration.cs" />
@@ -30,6 +31,7 @@
         <File Name="Service.Configuration.cs" />
         <File Name="ServiceCategory.Configuration.cs" />
         <File Name="UserService.Configuration.cs" />
+        <File Name="AutoJsService.Configuration.cs" />
       </GeneratedFiles>
     </Generation>
     <DatabaseFirstNamingRules>
@@ -48,9 +50,10 @@
       <Diagram Name="权限" DefaultDiagram="True" />
       <Diagram Name="设备" />
       <Diagram Name="服务" />
+      <Diagram Name="AutoJs" />
     </Diagrams>
     <Templates>
-      <Template Name="EF Core" Description="Use this template to generate classes for an Entity Framework Core model." Enabled="True" PredefinedTemplateName="EF Core C#">
+      <Template Name="Default" Description="New empty template for Devart Entity Developer C# code generation." Enabled="True" File="EasyNow.Default.tmpl">
         <ed:Property Name="ValidationFramework" Type="EntityDeveloper.TemplateEngine.ValidationFramework, EntityDeveloper.Common, Version=6.6.936.0, Culture=neutral, PublicKeyToken=09af7300eec23701">
           <ValidationFramework>None</ValidationFramework>
         </ed:Property>

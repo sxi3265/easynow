@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Autofac;
 using AutoMapper;
 using EasyNow.Bo.Abstractions;
-using EasyNow.Dal.Entities;
+using EasyNow.Dal;
 using EasyNow.Dto.Device;
 using EasyNow.Utility.Extensions;
 using Microsoft.EntityFrameworkCore;

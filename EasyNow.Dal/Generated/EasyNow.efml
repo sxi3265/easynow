@@ -6,7 +6,7 @@
       <Member Name="Online" p1:Guid="4815255f-451e-4602-a811-2522068e6ffa" />
     </EnumType>
   </class>
-  <class name="User" entity-set="Users" p1:Guid="0f2792b5-2d45-4a9d-b2bb-4bd8ce926db4">
+  <class name="User" entity-set="User" p1:Guid="0f2792b5-2d45-4a9d-b2bb-4bd8ce926db4">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="63052115-325a-41ff-b5fd-4cf23a189dbe">
       <column name="" />
     </id>
@@ -32,7 +32,7 @@
       <column name="" />
     </property>
   </class>
-  <class name="Role" entity-set="Roles" p1:Guid="16ec8d25-9285-4e29-9061-7406598fb95a">
+  <class name="Role" entity-set="Role" p1:Guid="16ec8d25-9285-4e29-9061-7406598fb95a">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="b5c49783-c8c9-4389-bb0f-b872090c7b5d">
       <column name="" />
     </id>
@@ -55,7 +55,7 @@
       <column name="" />
     </property>
   </class>
-  <class name="Privilege" entity-set="Privileges" p1:Guid="3811d54b-3a18-4aba-8c0c-a540228ac0be">
+  <class name="Privilege" entity-set="Privilege" p1:Guid="3811d54b-3a18-4aba-8c0c-a540228ac0be">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="7a6257b1-6e74-4afa-a461-6d998690d1e6">
       <column name="" />
     </id>
@@ -78,7 +78,7 @@
       <column name="" />
     </property>
   </class>
-  <class name="UserRole" entity-set="UserRoles" p1:Guid="a4527ea2-55ac-45df-96ed-d408d5482f58">
+  <class name="UserRole" entity-set="UserRole" p1:Guid="a4527ea2-55ac-45df-96ed-d408d5482f58">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="19f975b1-f18c-4fd6-b55c-5a2d97943d94">
       <column name="" />
     </id>
@@ -101,7 +101,7 @@
       <column name="" not-null="False" />
     </property>
   </class>
-  <class name="RolePrivilege" entity-set="RolePrivileges" p1:Guid="80f11ab3-2bf4-42d9-8c91-93c4b7bf4e00">
+  <class name="RolePrivilege" entity-set="RolePrivilege" p1:Guid="80f11ab3-2bf4-42d9-8c91-93c4b7bf4e00">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="e5fedd68-9af2-4599-ac6c-852f7671b116">
       <column name="" />
     </id>
@@ -124,7 +124,7 @@
       <column name="" not-null="False" />
     </property>
   </class>
-  <class name="Menu" entity-set="Menus" p1:Guid="ca44e8ed-5afa-4cf5-940d-6928a03fef05">
+  <class name="Menu" entity-set="Menu" p1:Guid="ca44e8ed-5afa-4cf5-940d-6928a03fef05">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="aa6ac429-c539-42e8-a19f-2018fe560d5b">
       <column name="" />
     </id>
@@ -147,7 +147,7 @@
       <column name="" />
     </property>
   </class>
-  <class name="RoleMenu" entity-set="RoleMenus" p1:Guid="da6e5173-e7b6-4980-97c7-0ead96f6da18">
+  <class name="RoleMenu" entity-set="RoleMenu" p1:Guid="da6e5173-e7b6-4980-97c7-0ead96f6da18">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="e46dc569-13f9-4c92-8b19-c924141bfa18">
       <column name="" />
     </id>
@@ -300,6 +300,26 @@
       <column name="" not-null="False" />
     </property>
   </class>
+  <class name="AutoJsService" entity-set="AutoJsService" p1:Guid="8b38eb31-6249-47ec-b9b5-0aa54cba5177">
+    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="f3173e16-4103-40e9-8f37-d6bfe3cc43da">
+      <column name="" />
+    </id>
+    <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="86efdea4-bf74-4098-879c-55bafab68bc2">
+      <column name="" />
+    </property>
+    <property name="UpdateTime" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="06d33b1f-091c-406d-bfd2-e2cf9e1a5fdd">
+      <column name="" />
+    </property>
+    <property name="Creator" type="Guid" p1:ValidateRequired="true" p1:Guid="c9fba341-8175-46b7-9129-8c428027d9ea">
+      <column name="" />
+    </property>
+    <property name="Updater" type="Guid" p1:ValidateRequired="true" p1:Guid="a2d8db53-59ee-45d2-ae8d-59de959d6ce6">
+      <column name="" />
+    </property>
+    <property name="FileId" type="String" p1:ValidateRequired="true" p1:Guid="e1309f27-4498-4c4b-bd67-05f51e1f73a1">
+      <column name="" />
+    </property>
+  </class>
   <associations>
     <association name="User_UserRole" cardinality="OneToMany" p1:Guid="35d7051c-1ea2-4741-991d-3e194af08ec1">
       <end1 multiplicity="One" name="User" class="UserRole" relation-class="User" constrained="True" lazy="False" p1:Guid="36c31250-8a75-4c39-b544-be0fa17db393">
@@ -395,6 +415,14 @@
       </end1>
       <end2 multiplicity="Many" name="UserServices" class="Service" relation-class="UserService" lazy="False" p1:Guid="3ed093ea-d01a-4f8e-96a5-d569d9c635a7">
         <property name="ServiceId" />
+      </end2>
+    </association>
+    <association name="Service_AutoJsService" cardinality="OneToOne" p1:Guid="15d0efbd-2f7a-44af-84d0-e063b607df6e">
+      <end1 multiplicity="One" name="Service" class="AutoJsService" relation-class="Service" constrained="True" lazy="False" p1:Guid="51f8c1b3-e481-4e48-b735-d83057d9ea15">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="One" name="AutoJsService" class="Service" relation-class="AutoJsService" generate="False" constrained="False" lazy="False" p1:Guid="9fe881c2-723e-45fa-a01e-bae2398e4269">
+        <property name="Id" />
       </end2>
     </association>
   </associations>
