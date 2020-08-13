@@ -1,3 +1,4 @@
+using System;
 using EasyNow.Bo.Abstractions;
 
 using EasyNow.Dto.Script;
@@ -15,6 +16,7 @@ namespace EasyNow.Bo
             //var query = Db.Script.AsNoTracking()
             //    .WhereIf(!string.IsNullOrEmpty(model.Name), e => e.Name.Contains(model.Name));
             //return Task.FromResult(query.ToPagedList<Script, ScriptInfo>(model));
+            throw new NotImplementedException();
         }
     }
 }

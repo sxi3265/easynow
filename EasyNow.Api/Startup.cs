@@ -68,7 +68,7 @@ namespace EasyNow.Api
             //services.AddApiVersioning();
             services.AddDbContext<EasyNowContext>(builder =>
             {
-                builder.UseMySql("Server=127.0.0.1;Database=AutoJs;Uid=root;Pwd=123456;");
+                builder.UseMySql("Server=mysql.20666666.xyz;Port=30000;Database=EasyNow;Uid=root;Pwd=sbxaialhj;");
             });
             services.AddHttpContextAccessor();
             services.AddCors();
