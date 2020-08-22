@@ -7,7 +7,7 @@ on:
     branches: [ master,develop ]
 
 env:
-  IMAGE_NAME: easynow-web
+  IMAGE_NAME: easynow-api
 
 jobs:
    push:
@@ -18,14 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag image
+        run: docker build . --file EasyNow.Api/Dockerfile --tag image
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
 
       - name: Push image
         run: |
-          IMAGE_ID=docker.pkg.github.com/easynow/$IMAGE_NAME
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
           [ "$VERSION" == "master" ] && VERSION=latest
