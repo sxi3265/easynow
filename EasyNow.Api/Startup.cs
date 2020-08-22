@@ -57,18 +57,18 @@ namespace EasyNow.Api
                 };
             });
 
-            //services.AddControllers(opts =>
-            //{
-            //    opts.Filters.Add<GlobalExceptionFilter>();
-            //    opts.Filters.Add<ResultActionFilterAttribute>();
-            //}).AddControllersAsServices().AddNewtonsoftJson(opts =>
-            //{
-            //    JsonTool.JsonSerializerSettings.CopyTo(opts.SerializerSettings);
-            //});
-            //services.AddApiVersioning();
+            services.AddControllers(opts =>
+            {
+                opts.Filters.Add<GlobalExceptionFilter>();
+                opts.Filters.Add<ResultActionFilterAttribute>();
+            }).AddControllersAsServices().AddNewtonsoftJson(opts =>
+            {
+                JsonTool.JsonSerializerSettings.CopyTo(opts.SerializerSettings);
+            });
+            services.AddApiVersioning();
             services.AddDbContext<EasyNowContext>(builder =>
             {
-                builder.UseMySql("Server=mysql.20666666.xyz;Port=30000;Database=EasyNow;Uid=root;Pwd=sbxaialhj;");
+                builder.UseMySql(Configuration["DbConn"]);
             });
             services.AddHttpContextAccessor();
             services.AddCors();
@@ -103,7 +103,7 @@ namespace EasyNow.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<ScriptService>();
-                //endpoints.MapControllers();   
+                endpoints.MapControllers();   
             });
         }
     }
