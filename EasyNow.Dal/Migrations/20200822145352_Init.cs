@@ -134,6 +134,25 @@ namespace EasyNow.Dal.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WxPusherApp",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    CreateTime = table.Column<DateTime>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UpdateTime = table.Column<DateTime>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    Creator = table.Column<Guid>(nullable: false),
+                    Updater = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    Token = table.Column<string>(maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WxPusherApp", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RoleMenu",
                 columns: table => new
                 {
@@ -284,6 +303,35 @@ namespace EasyNow.Dal.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WxPusherUser",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    CreateTime = table.Column<DateTime>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UpdateTime = table.Column<DateTime>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    Creator = table.Column<Guid>(nullable: false),
+                    Updater = table.Column<Guid>(nullable: false),
+                    Uid = table.Column<string>(maxLength: 200, nullable: false),
+                    NickName = table.Column<string>(maxLength: 200, nullable: false),
+                    HeadImg = table.Column<string>(maxLength: 200, nullable: false),
+                    Enable = table.Column<bool>(nullable: false),
+                    SubTime = table.Column<DateTime>(nullable: false),
+                    AppId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WxPusherUser", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WxPusherUser_WxPusherApp_AppId",
+                        column: x => x.AppId,
+                        principalTable: "WxPusherApp",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AutoJsService",
                 columns: table => new
                 {
@@ -397,6 +445,11 @@ namespace EasyNow.Dal.Migrations
                 name: "IX_UserService_UserId",
                 table: "UserService",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WxPusherUser_AppId",
+                table: "WxPusherUser",
+                column: "AppId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -420,6 +473,9 @@ namespace EasyNow.Dal.Migrations
                 name: "UserService");
 
             migrationBuilder.DropTable(
+                name: "WxPusherUser");
+
+            migrationBuilder.DropTable(
                 name: "Menu");
 
             migrationBuilder.DropTable(
@@ -436,6 +492,9 @@ namespace EasyNow.Dal.Migrations
 
             migrationBuilder.DropTable(
                 name: "User");
+
+            migrationBuilder.DropTable(
+                name: "WxPusherApp");
 
             migrationBuilder.DropTable(
                 name: "ServiceCategory");

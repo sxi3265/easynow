@@ -21,33 +21,31 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace EasyNow.Dal
 {
     /// <summary>
-    /// There are no comments for ServiceConfiguration in the schema.
+    /// There are no comments for WxPusherAppConfiguration in the schema.
     /// </summary>
-    public partial class ServiceConfiguration : IEntityTypeConfiguration<Service>
+    public partial class WxPusherAppConfiguration : IEntityTypeConfiguration<WxPusherApp>
     {
         /// <summary>
-        /// There are no comments for Configure(EntityTypeBuilder<Service> builder) method in the schema.
+        /// There are no comments for Configure(EntityTypeBuilder<WxPusherApp> builder) method in the schema.
         /// </summary>
-        public void Configure(EntityTypeBuilder<Service> builder)
+        public void Configure(EntityTypeBuilder<WxPusherApp> builder)
         {
-            builder.ToTable(@"Service");
+            builder.ToTable(@"WxPusherApp");
             builder.Property<System.Guid>(x => x.Id).HasColumnName(@"Id").IsRequired().ValueGeneratedOnAdd();
             builder.Property<System.DateTime>(x => x.CreateTime).HasColumnName(@"CreateTime").IsRequired().ValueGeneratedOnAdd();
             builder.Property<System.DateTime>(x => x.UpdateTime).HasColumnName(@"UpdateTime").IsRequired().ValueGeneratedOnAddOrUpdate();
             builder.Property<System.Guid>(x => x.Creator).HasColumnName(@"Creator").IsRequired().ValueGeneratedNever();
             builder.Property<System.Guid>(x => x.Updater).HasColumnName(@"Updater").IsRequired().ValueGeneratedNever();
-            builder.Property<string>(x => x.Code).HasColumnName(@"Code").IsRequired().ValueGeneratedNever().HasMaxLength(200);
             builder.Property<string>(x => x.Name).HasColumnName(@"Name").IsRequired().ValueGeneratedNever().HasMaxLength(200);
-            builder.Property<System.Guid>(@"CategoryId").HasColumnName(@"CategoryId").ValueGeneratedNever();
+            builder.Property<string>(x => x.Token).HasColumnName(@"Token").IsRequired().ValueGeneratedNever().HasMaxLength(200);
             builder.HasKey(@"Id");
-            builder.HasOne(x => x.Category).WithMany(op => op.Services).IsRequired(true).HasForeignKey(@"CategoryId");
 
             CustomizeConfiguration(builder);
         }
 
         #region Partial Methods
 
-        partial void CustomizeConfiguration(EntityTypeBuilder<Service> builder);
+        partial void CustomizeConfiguration(EntityTypeBuilder<WxPusherApp> builder);
 
         #endregion
     }

@@ -18,13 +18,10 @@ using System.Collections.Generic;
 
 namespace EasyNow.Dal
 {
-    public partial class User {
+    public partial class WxPusherUser {
 
-        public User()
+        public WxPusherUser()
         {
-            this.UserRoles = new List<UserRole>();
-            this.UserDevices = new List<UserDevice>();
-            this.UserServices = new List<UserService>();
             OnCreated();
         }
 
@@ -58,37 +55,37 @@ namespace EasyNow.Dal
             set;
         }
 
-        public virtual string Account
+        public virtual string Uid
         {
             get;
             set;
         }
 
-        public virtual string Password
+        public virtual string NickName
         {
             get;
             set;
         }
 
-        public virtual string Name
+        public virtual string HeadImg
         {
             get;
             set;
         }
 
-        public virtual IList<UserRole> UserRoles
+        public virtual bool Enable
         {
             get;
             set;
         }
 
-        public virtual IList<UserDevice> UserDevices
+        public virtual System.DateTime SubTime
         {
             get;
             set;
         }
 
-        public virtual IList<UserService> UserServices
+        public virtual WxPusherApp WxPusherApp
         {
             get;
             set;

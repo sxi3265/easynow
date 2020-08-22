@@ -589,6 +589,110 @@ namespace EasyNow.Dal.Migrations
                     b.ToTable("UserService");
                 });
 
+            modelBuilder.Entity("EasyNow.Dal.WxPusherApp", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("Name")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnName("Token")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WxPusherApp");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.WxPusherUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("AppId")
+                        .HasColumnName("AppId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("Enable")
+                        .HasColumnName("Enable")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("HeadImg")
+                        .IsRequired()
+                        .HasColumnName("HeadImg")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("NickName")
+                        .IsRequired()
+                        .HasColumnName("NickName")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("SubTime")
+                        .HasColumnName("SubTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Uid")
+                        .IsRequired()
+                        .HasColumnName("Uid")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppId");
+
+                    b.ToTable("WxPusherUser");
+                });
+
             modelBuilder.Entity("EasyNow.Dal.AutoJsService", b =>
                 {
                     b.HasOne("EasyNow.Dal.Service", "Service")
@@ -685,6 +789,15 @@ namespace EasyNow.Dal.Migrations
                     b.HasOne("EasyNow.Dal.User", "User")
                         .WithMany("UserServices")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.WxPusherUser", b =>
+                {
+                    b.HasOne("EasyNow.Dal.WxPusherApp", "WxPusherApp")
+                        .WithMany("WxPusherUsers")
+                        .HasForeignKey("AppId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

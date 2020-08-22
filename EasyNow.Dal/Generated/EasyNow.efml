@@ -320,6 +320,64 @@
       <column name="" />
     </property>
   </class>
+  <class name="WxPusherUser" entity-set="WxPusherUser" p1:Guid="f1f674e0-d17c-4b53-b4dd-b9736a1e1b3f">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="d4370be9-c0c7-4c34-a9c4-f931f92aa7d2">
+      <column name="" />
+    </id>
+    <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="f983adb1-e5a0-410d-8819-51d7d20cb15c">
+      <column name="" />
+    </property>
+    <property name="UpdateTime" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="712023aa-21e1-484d-921e-6f9db298cfff">
+      <column name="" />
+    </property>
+    <property name="Creator" type="Guid" p1:ValidateRequired="true" p1:Guid="1136b8a7-c4a5-4985-b57c-f70d2f251a08">
+      <column name="" />
+    </property>
+    <property name="Updater" type="Guid" p1:ValidateRequired="true" p1:Guid="c5059965-9cab-4801-865d-7a0b12c19c5b">
+      <column name="" />
+    </property>
+    <property name="Uid" type="String" p1:ValidateRequired="true" p1:Guid="e4098d29-a253-4829-87e9-94c72991d9b8">
+      <column name="" />
+    </property>
+    <property name="NickName" type="String" p1:ValidateRequired="true" p1:Guid="91edab1c-ccc6-4136-9024-4675ea500dbf">
+      <column name="" />
+    </property>
+    <property name="HeadImg" type="String" p1:ValidateRequired="true" p1:Guid="bc189b97-d841-4185-99d5-71e964c1932c">
+      <column name="" />
+    </property>
+    <property name="Enable" type="Boolean" p1:ValidateRequired="true" p1:Guid="c56dc138-105d-471f-809e-97f328829546">
+      <column name="" />
+    </property>
+    <property name="SubTime" type="DateTime" p1:ValidateRequired="true" p1:Guid="9149a260-a0ce-46bf-9859-e229548bff97">
+      <column name="" />
+    </property>
+    <property name="AppId" type="Guid" shadow="True" p1:ValidateRequired="true" p1:Guid="90af11eb-dd21-494c-8a40-8a5a707d2bc1">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="WxPusherApp" entity-set="WxPusherApp" p1:Guid="fb7cb456-6ca6-4759-b0fc-5708300b9ffb">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="2f0cb257-65bf-4670-a995-efbdb39a3e14">
+      <column name="" />
+    </id>
+    <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="9336ef7b-a6c8-46b5-975e-cb6ce3c5ffa2">
+      <column name="" />
+    </property>
+    <property name="UpdateTime" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="dbdd491e-86cb-4292-9da3-b11f76b5e2ac">
+      <column name="" />
+    </property>
+    <property name="Creator" type="Guid" p1:ValidateRequired="true" p1:Guid="4ba0701e-e3cd-4652-8fe3-93dcd7fd81e8">
+      <column name="" />
+    </property>
+    <property name="Updater" type="Guid" p1:ValidateRequired="true" p1:Guid="293abafa-abab-4fe9-a8ba-5cc2570284b7">
+      <column name="" />
+    </property>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="3bb6c58f-8fff-47e3-9012-a8d9e2c701ac">
+      <column name="" />
+    </property>
+    <property name="Token" type="String" p1:ValidateRequired="true" p1:Guid="5621ff3a-7ca5-4309-9605-94cb5949d504">
+      <column name="" />
+    </property>
+  </class>
   <associations>
     <association name="User_UserRole" cardinality="OneToMany" p1:Guid="35d7051c-1ea2-4741-991d-3e194af08ec1">
       <end1 multiplicity="One" name="User" class="UserRole" relation-class="User" constrained="True" lazy="False" p1:Guid="36c31250-8a75-4c39-b544-be0fa17db393">
@@ -423,6 +481,14 @@
       </end1>
       <end2 multiplicity="One" name="AutoJsService" class="Service" relation-class="AutoJsService" generate="False" constrained="False" lazy="False" p1:Guid="9fe881c2-723e-45fa-a01e-bae2398e4269">
         <property name="Id" />
+      </end2>
+    </association>
+    <association name="WxPusherApp_WxPusherUser" cardinality="OneToMany" p1:Guid="e426c610-6410-4dc6-8842-cda923e74dfc">
+      <end1 multiplicity="One" name="WxPusherApp" class="WxPusherUser" relation-class="WxPusherApp" constrained="True" lazy="False" p1:Guid="b24a4d96-a316-4dac-880c-db85a9fa2dd9">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="WxPusherUsers" class="WxPusherApp" relation-class="WxPusherUser" lazy="False" p1:Guid="801a615e-db0e-4520-9b78-de2131f326d2">
+        <property name="AppId" />
       </end2>
     </association>
   </associations>

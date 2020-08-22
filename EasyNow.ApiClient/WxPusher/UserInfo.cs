@@ -8,8 +8,8 @@ namespace EasyNow.ApiClient.WxPusher
         public string NickName { get; set; }
         public string HeadImg { get; set; }
         public string Sex { get; set; }
-        public long ActiveTime { get; set; }
-        public long LastTime { get; set; }
+        public long? ActiveTime { get; set; }
+        public long? LastTime { get; set; }
         public bool Enable { get; set; }
         public long CreateTime { get; set; }
     }

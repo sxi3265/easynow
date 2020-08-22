@@ -18,6 +18,8 @@
         <File Name="ServiceCategory.cs" />
         <File Name="UserService.cs" />
         <File Name="AutoJsService.cs" />
+        <File Name="WxPusherUser.cs" />
+        <File Name="WxPusherApp.cs" />
         <File Name="DeviceStatus.cs" />
         <File Name="User.Configuration.cs" />
         <File Name="Role.Configuration.cs" />
@@ -32,6 +34,8 @@
         <File Name="ServiceCategory.Configuration.cs" />
         <File Name="UserService.Configuration.cs" />
         <File Name="AutoJsService.Configuration.cs" />
+        <File Name="WxPusherUser.Configuration.cs" />
+        <File Name="WxPusherApp.Configuration.cs" />
       </GeneratedFiles>
     </Generation>
     <DatabaseFirstNamingRules>
@@ -51,6 +55,7 @@
       <Diagram Name="设备" />
       <Diagram Name="服务" />
       <Diagram Name="AutoJs" />
+      <Diagram Name="微信推送" />
     </Diagrams>
     <Templates>
       <Template Name="Default" Description="New empty template for Devart Entity Developer C# code generation." Enabled="True" File="EasyNow.Default.tmpl">

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EasyNow.Api.Controllers
 {
-    [ApiVersion("1.0")]
+    [ApiVersion("1")]
     public class UserController:ApiBaseController
     {
         private IUserBo UserBo => Scope.Resolve<IUserBo>();

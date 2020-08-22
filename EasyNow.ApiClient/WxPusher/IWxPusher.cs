@@ -36,6 +36,6 @@ namespace EasyNow.ApiClient.WxPusher
         /// <param name="req"></param>
         /// <returns></returns>
         [Get("/api/fun/wxuser")]
-        Task<Result<QueryUserResp>> QueryUser([Body] QueryUserReq req);
+        Task<Result<QueryUserResp>> QueryUser([Query] QueryUserReq req);
     }
 }
