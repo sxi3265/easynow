@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntDesign" Version="0.3.0-nightly-2008111433" />
-    <PackageReference Include="AntDesign.Pro.Layout" Version="0.1.0-nightly-200724105434" />
+    <PackageReference Include="AntDesign" Version="0.3.0-nightly-2008220130" />
+    <PackageReference Include="AntDesign.Pro.Layout" Version="0.1.0-nightly-200821091441" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(SolutionDir)'==''">

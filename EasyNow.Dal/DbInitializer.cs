@@ -15,8 +15,14 @@ namespace EasyNow.Dal
                 context.User.Add(new User
                 {
                     Account = "sxi3265",
-                    Password = "sbxaialhj"
+                    Password = "sbxaialhj",
+                    Name = "sxi3265"
                 });
+            }
+            else
+            {
+                var user=context.User.First();
+                user.Name = "test";
             }
 
             if (context.HasChanges())

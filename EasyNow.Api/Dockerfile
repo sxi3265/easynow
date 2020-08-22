@@ -6,9 +6,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["EasyNow.Api/EasyNow.Api.csproj", "EasyNow.Api/"]
-RUN dotnet restore "EasyNow.Api/EasyNow.Api.csproj"
 COPY . .
+RUN dotnet restore "EasyNow.Api/EasyNow.Api.csproj"
 WORKDIR "/src/EasyNow.Api"
 RUN dotnet build "EasyNow.Api.csproj" -c Release -o /app/build
 

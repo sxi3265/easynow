@@ -7,7 +7,7 @@
     </EnumType>
   </class>
   <class name="User" entity-set="User" p1:Guid="0f2792b5-2d45-4a9d-b2bb-4bd8ce926db4">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="63052115-325a-41ff-b5fd-4cf23a189dbe">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="63052115-325a-41ff-b5fd-4cf23a189dbe">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="8d6cbba5-e4f7-4dd1-8774-a1bf0e74fbeb">
@@ -33,7 +33,7 @@
     </property>
   </class>
   <class name="Role" entity-set="Role" p1:Guid="16ec8d25-9285-4e29-9061-7406598fb95a">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="b5c49783-c8c9-4389-bb0f-b872090c7b5d">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="b5c49783-c8c9-4389-bb0f-b872090c7b5d">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="ed0177aa-aedb-4321-b95a-08e3c966e7b0">
@@ -56,7 +56,7 @@
     </property>
   </class>
   <class name="Privilege" entity-set="Privilege" p1:Guid="3811d54b-3a18-4aba-8c0c-a540228ac0be">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="7a6257b1-6e74-4afa-a461-6d998690d1e6">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="7a6257b1-6e74-4afa-a461-6d998690d1e6">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="cf0c50cd-9349-42b5-9f19-d10fbe02d615">
@@ -79,7 +79,7 @@
     </property>
   </class>
   <class name="UserRole" entity-set="UserRole" p1:Guid="a4527ea2-55ac-45df-96ed-d408d5482f58">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="19f975b1-f18c-4fd6-b55c-5a2d97943d94">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="19f975b1-f18c-4fd6-b55c-5a2d97943d94">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="489cd0b0-6a05-4e7a-bb81-10b126e5ad67">
@@ -102,7 +102,7 @@
     </property>
   </class>
   <class name="RolePrivilege" entity-set="RolePrivilege" p1:Guid="80f11ab3-2bf4-42d9-8c91-93c4b7bf4e00">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="e5fedd68-9af2-4599-ac6c-852f7671b116">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="e5fedd68-9af2-4599-ac6c-852f7671b116">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="b4a9bd59-123c-44d2-9d1a-6ba5235686e5">
@@ -125,7 +125,7 @@
     </property>
   </class>
   <class name="Menu" entity-set="Menu" p1:Guid="ca44e8ed-5afa-4cf5-940d-6928a03fef05">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="aa6ac429-c539-42e8-a19f-2018fe560d5b">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="aa6ac429-c539-42e8-a19f-2018fe560d5b">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="1a2e9738-f9bf-407a-8f17-f12ec70444f4">
@@ -148,7 +148,7 @@
     </property>
   </class>
   <class name="RoleMenu" entity-set="RoleMenu" p1:Guid="da6e5173-e7b6-4980-97c7-0ead96f6da18">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="e46dc569-13f9-4c92-8b19-c924141bfa18">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="e46dc569-13f9-4c92-8b19-c924141bfa18">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="323cf431-c1b3-4676-a354-347bdcf803e4">
@@ -171,7 +171,7 @@
     </property>
   </class>
   <class name="Device" entity-set="Device" p1:Guid="f7754d12-fce2-439c-b7c3-94839683612c">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="72deaf68-3d2d-46cc-8b18-d1963e265379">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="72deaf68-3d2d-46cc-8b18-d1963e265379">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="90d2da5f-3a8c-493d-9e43-d12ab358f33c">
@@ -203,7 +203,7 @@
     </property>
   </class>
   <class name="UserDevice" entity-set="UserDevice" p1:Guid="9b00f53b-8159-4711-8638-c15a9a2f3b03">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="69561cad-8108-41b4-9e76-deaa3f8fd79b">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="69561cad-8108-41b4-9e76-deaa3f8fd79b">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="91ec3dd5-0ef0-4279-8fe9-edd907ef1843">
@@ -226,7 +226,7 @@
     </property>
   </class>
   <class name="Service" entity-set="Service" p1:Guid="d5665b2a-7635-45fd-8218-080475ca7408">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="893d0bd7-1308-4316-a5e6-8c39db6d9208">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="893d0bd7-1308-4316-a5e6-8c39db6d9208">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="6a226c67-6a81-49dd-8e07-04d24c7dd2e6">
@@ -252,7 +252,7 @@
     </property>
   </class>
   <class name="ServiceCategory" entity-set="ServiceCategory" p1:Guid="3ad1b00d-0070-4363-b75a-6a4837bc790e">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="176aefcb-15c3-4af0-a8f7-d76121a45dbb">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="176aefcb-15c3-4af0-a8f7-d76121a45dbb">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="6f3d3641-86c3-4380-a72a-3478d8413637">
@@ -278,7 +278,7 @@
     </property>
   </class>
   <class name="UserService" entity-set="UserService" p1:Guid="212cf526-1064-418d-b2c4-f927aad01d22">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="f1f40987-2cd5-44db-a61d-0f2bf88858c4">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="f1f40987-2cd5-44db-a61d-0f2bf88858c4">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="ae14a246-2742-4bfe-aada-7646bdc92d8e">
@@ -301,7 +301,7 @@
     </property>
   </class>
   <class name="AutoJsService" entity-set="AutoJsService" p1:Guid="8b38eb31-6249-47ec-b9b5-0aa54cba5177">
-    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="f3173e16-4103-40e9-8f37-d6bfe3cc43da">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="f3173e16-4103-40e9-8f37-d6bfe3cc43da">
       <column name="" />
     </id>
     <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="86efdea4-bf74-4098-879c-55bafab68bc2">

@@ -73,6 +73,7 @@ namespace EasyNow.Api
             services.AddHttpContextAccessor();
             services.AddCors();
             services.AddGrpc();
+            services.AddAuthorization();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)

@@ -9,19 +9,20 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyNow.Dal.Migrations
 {
     [DbContext(typeof(EasyNowContext))]
-    [Migration("20200813051129_Init")]
+    [Migration("20200822091454_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("EasyNow.Dal.AutoJsService", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -57,6 +58,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.Device", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -112,6 +114,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.Menu", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -153,6 +156,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.Privilege", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -194,6 +198,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.Role", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -235,6 +240,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.RoleMenu", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -276,6 +282,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.RolePrivilege", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -317,6 +324,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.Service", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -364,6 +372,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.ServiceCategory", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -411,6 +420,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.User", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -458,6 +468,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.UserDevice", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -499,6 +510,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.UserRole", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
@@ -540,6 +552,7 @@ namespace EasyNow.Dal.Migrations
             modelBuilder.Entity("EasyNow.Dal.UserService", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
