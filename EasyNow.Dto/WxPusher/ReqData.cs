@@ -1,4 +1,5 @@
 ﻿using System;
+using EasyNow.Utility.Tools;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -11,7 +12,7 @@ namespace EasyNow.Dto.WxPusher
         public string Source { get; set; }
         public string UserName { get; set; }
         public string UserHeadImg { get; set; }
-        [JsonProperty(ItemConverterType = typeof(JavaScriptDateTimeConverter))]
+        [JsonConverter(typeof(MillisecondEpochConverter))]
         public DateTime Time { get; set; }
         public string Uid { get; set; }
         public string Extra { get; set; }
