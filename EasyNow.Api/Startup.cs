@@ -26,6 +26,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Refit;
+using UserService = EasyNow.Api.Services.UserService;
 
 namespace EasyNow.Api
 {
@@ -116,6 +117,7 @@ namespace EasyNow.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<ScriptService>();
+                endpoints.MapGrpcService<UserService>();
                 endpoints.MapControllers();   
             });
         }

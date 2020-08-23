@@ -1,0 +1,16 @@
+﻿syntax ="proto3";
+
+option csharp_namespace = "XUnitTestProject";
+
+service User{
+	rpc Login(UserLoginReq) returns (UserLoginResp);
+}
+
+message UserLoginReq{
+	string account=1;
+	string password=2;
+}
+
+message UserLoginResp{
+	string token=1;
+}
