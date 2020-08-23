@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Autofac;
 using EasyNow.ApiClient.WxPusher;
 using EasyNow.Bo.Abstractions;
+using EasyNow.Dto.WxPusher;
+using EasyNow.Utility.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,7 +19,7 @@ namespace EasyNow.Api.Controllers
         [HttpPost,AllowAnonymous]
         public async Task WxPusherCallback(Dto.WxPusher.Req req)
         {
-            await WxBo.WxPusherUserSubscribeAsync(req.Data.AppKey,req.Data.Uid);
+            await WxBo.WxPusherUserSubscribeAsync(req.Data.AppKey,req.Data.To<UserDto>());
         }
     }
 }

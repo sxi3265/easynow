@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EasyNow.Dto.WxPusher;
 
 namespace EasyNow.Bo.Abstractions
 {
@@ -8,8 +9,8 @@ namespace EasyNow.Bo.Abstractions
         /// 更新wxpusher用户订阅
         /// </summary>
         /// <param name="appKey"></param>
-        /// <param name="uid"></param>
+        /// <param name="user"></param>
         /// <returns></returns>
-        Task WxPusherUserSubscribeAsync(string appKey,string uid);
+        Task WxPusherUserSubscribeAsync(string appKey, UserDto user);
     }
 }

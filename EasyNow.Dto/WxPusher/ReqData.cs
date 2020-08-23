@@ -1,4 +1,8 @@
-﻿namespace EasyNow.Dto.WxPusher
+﻿using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace EasyNow.Dto.WxPusher
 {
     public class ReqData
     {
@@ -7,7 +11,8 @@
         public string Source { get; set; }
         public string UserName { get; set; }
         public string UserHeadImg { get; set; }
-        public long Time { get; set; }
+        [JsonProperty(ItemConverterType = typeof(JavaScriptDateTimeConverter))]
+        public DateTime Time { get; set; }
         public string Uid { get; set; }
         public string Extra { get; set; }
     }
