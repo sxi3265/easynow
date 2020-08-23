@@ -18,11 +18,10 @@ using System.Collections.Generic;
 
 namespace EasyNow.Dal
 {
-    public partial class Service {
+    public partial class WxPusherAppUser {
 
-        public Service()
+        public WxPusherAppUser()
         {
-            this.UserServices = new List<UserService>();
             OnCreated();
         }
 
@@ -56,25 +55,13 @@ namespace EasyNow.Dal
             set;
         }
 
-        public virtual string Code
+        public virtual WxPusherApp WxPusherApp
         {
             get;
             set;
         }
 
-        public virtual string Name
-        {
-            get;
-            set;
-        }
-
-        public virtual ServiceCategory Category
-        {
-            get;
-            set;
-        }
-
-        public virtual IList<UserService> UserServices
+        public virtual WxPusherUser WxPusherUser
         {
             get;
             set;

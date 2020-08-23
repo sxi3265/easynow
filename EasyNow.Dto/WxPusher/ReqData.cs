@@ -7,7 +7,7 @@
         public string Source { get; set; }
         public string UserName { get; set; }
         public string UserHeadImg { get; set; }
-        public int Time { get; set; }
+        public long Time { get; set; }
         public string Uid { get; set; }
         public string Extra { get; set; }
     }

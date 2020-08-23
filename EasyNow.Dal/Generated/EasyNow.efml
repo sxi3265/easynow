@@ -351,9 +351,6 @@
     <property name="SubTime" type="DateTime" p1:ValidateRequired="true" p1:Guid="9149a260-a0ce-46bf-9859-e229548bff97">
       <column name="" />
     </property>
-    <property name="AppId" type="Guid" shadow="True" p1:ValidateRequired="true" p1:Guid="90af11eb-dd21-494c-8a40-8a5a707d2bc1">
-      <column name="" not-null="False" />
-    </property>
   </class>
   <class name="WxPusherApp" entity-set="WxPusherApp" p1:Guid="fb7cb456-6ca6-4759-b0fc-5708300b9ffb">
     <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="2f0cb257-65bf-4670-a995-efbdb39a3e14">
@@ -376,6 +373,32 @@
     </property>
     <property name="Token" type="String" p1:ValidateRequired="true" p1:Guid="5621ff3a-7ca5-4309-9605-94cb5949d504">
       <column name="" />
+    </property>
+    <property name="Key" type="String" p1:ValidateRequired="true" p1:Guid="4bb3b668-055c-451d-8b3e-7831cebe1878">
+      <column name="" />
+    </property>
+  </class>
+  <class name="WxPusherAppUser" entity-set="WxPusherAppUser" p1:Guid="9170c01a-1362-4049-85f7-dfd084488b20">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="e3d6ca0a-c35e-4b1c-baa6-3b984e86290b">
+      <column name="" />
+    </id>
+    <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="000e1134-2768-40a8-93db-8836a1b6fa89">
+      <column name="" />
+    </property>
+    <property name="UpdateTime" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="c7f4c300-1022-4833-85ea-fa6f1dbff2fa">
+      <column name="" />
+    </property>
+    <property name="Creator" type="Guid" p1:ValidateRequired="true" p1:Guid="810751f4-69d2-4428-8e64-5255e0011d43">
+      <column name="" />
+    </property>
+    <property name="Updater" type="Guid" p1:ValidateRequired="true" p1:Guid="de16d1e3-43f5-481f-92a2-b07f99727e3e">
+      <column name="" />
+    </property>
+    <property name="AppId" type="Guid" shadow="True" p1:ValidateRequired="true" p1:Guid="7d06ee14-b5a2-4831-b0e6-700b38f3a22f">
+      <column name="" not-null="False" />
+    </property>
+    <property name="UserId" type="Guid" shadow="True" p1:ValidateRequired="true" p1:Guid="fab56d4d-b49f-4630-8abc-33f9ef6b8398">
+      <column name="" not-null="False" />
     </property>
   </class>
   <associations>
@@ -483,12 +506,20 @@
         <property name="Id" />
       </end2>
     </association>
-    <association name="WxPusherApp_WxPusherUser" cardinality="OneToMany" p1:Guid="e426c610-6410-4dc6-8842-cda923e74dfc">
-      <end1 multiplicity="One" name="WxPusherApp" class="WxPusherUser" relation-class="WxPusherApp" constrained="True" lazy="False" p1:Guid="b24a4d96-a316-4dac-880c-db85a9fa2dd9">
+    <association name="WxPusherApp_WxPusherAppUser" cardinality="OneToMany" p1:Guid="72a3b7ac-80ca-4ec0-8d49-843560b76fa3">
+      <end1 multiplicity="One" name="WxPusherApp" class="WxPusherAppUser" relation-class="WxPusherApp" constrained="True" lazy="False" p1:Guid="c5faad5b-a2cf-4f1a-a864-bf442ce89fee">
         <property name="Id" />
       </end1>
-      <end2 multiplicity="Many" name="WxPusherUsers" class="WxPusherApp" relation-class="WxPusherUser" lazy="False" p1:Guid="801a615e-db0e-4520-9b78-de2131f326d2">
+      <end2 multiplicity="Many" name="WxPusherAppUsers" class="WxPusherApp" relation-class="WxPusherAppUser" lazy="False" p1:Guid="32097406-2496-4323-8552-1fd7d571ef11">
         <property name="AppId" />
+      </end2>
+    </association>
+    <association name="WxPusherUser_WxPusherAppUser" cardinality="OneToMany" p1:Guid="16f76fda-766f-41cc-81e3-3bc1465bfbcc">
+      <end1 multiplicity="One" name="WxPusherUser" class="WxPusherAppUser" relation-class="WxPusherUser" constrained="True" lazy="False" p1:Guid="2f54a0a3-de2c-4b73-a886-d7aeacf5c3c9">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="WxPusherAppUsers" class="WxPusherUser" relation-class="WxPusherAppUser" lazy="False" p1:Guid="8f0c5278-f55e-46ee-88a6-e260429b3ff1">
+        <property name="UserId" />
       </end2>
     </association>
   </associations>

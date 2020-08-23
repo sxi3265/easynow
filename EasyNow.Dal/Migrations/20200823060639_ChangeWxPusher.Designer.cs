@@ -3,14 +3,16 @@ using System;
 using EasyNow.Dal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EasyNow.Dal.Migrations
 {
     [DbContext(typeof(EasyNowContext))]
-    partial class EasyNowContextModelSnapshot : ModelSnapshot
+    [Migration("20200823060639_ChangeWxPusher")]
+    partial class ChangeWxPusher
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -2,6 +2,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Autofac;
 using EasyNow.ApiClient.WxPusher;
+using EasyNow.Bo.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,12 +12,12 @@ namespace EasyNow.Api.Controllers
     [ApiVersion("1")]
     public class WxController : ApiBaseController
     {
+        private IWxBo WxBo => Scope.Resolve<IWxBo>();
+
         [HttpPost,AllowAnonymous]
-        public async Task<IActionResult> WxPusherCallback()
+        public async Task WxPusherCallback(Dto.WxPusher.Req req)
         {
-            using var sr = new StreamReader(this.Request.Body);
-            Scope.Resolve<ILogger<WxController>>().LogInformation(await sr.ReadToEndAsync());
-            return NoContent();
+            await WxBo.WxPusherUserSubscribeAsync(req.Data.AppKey,req.Data.Uid);
         }
     }
 }

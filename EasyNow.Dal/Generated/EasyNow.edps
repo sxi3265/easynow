@@ -20,6 +20,7 @@
         <File Name="AutoJsService.cs" />
         <File Name="WxPusherUser.cs" />
         <File Name="WxPusherApp.cs" />
+        <File Name="WxPusherAppUser.cs" />
         <File Name="DeviceStatus.cs" />
         <File Name="User.Configuration.cs" />
         <File Name="Role.Configuration.cs" />
@@ -36,6 +37,7 @@
         <File Name="AutoJsService.Configuration.cs" />
         <File Name="WxPusherUser.Configuration.cs" />
         <File Name="WxPusherApp.Configuration.cs" />
+        <File Name="WxPusherAppUser.Configuration.cs" />
       </GeneratedFiles>
     </Generation>
     <DatabaseFirstNamingRules>

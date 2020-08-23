@@ -61,7 +61,9 @@ namespace XUnitTestProject
             var wxPusher = serviceProvider.GetService<IWxPusher>();
             var result = await wxPusher.QueryUser(new QueryUserReq
             {
-                AppToken = "AT_A2cAsKKucEBs2QWc6ZFQQx3bclfj7tfr"
+                AppToken = "AT_A2cAsKKucEBs2QWc6ZFQQx3bclfj7tfr",
+                PageSize = int.MaxValue,
+                Page = 1
             });
             Assert.True(result.Data?.Records.Any(e=>e.Uid== "UID_HfgFMB2bmZ0vzumuoJlAvOPj86Yg"));
         }
