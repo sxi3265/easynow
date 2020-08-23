@@ -17,8 +17,9 @@ namespace EasyNow.Api.Controllers
         private IWxBo WxBo => Scope.Resolve<IWxBo>();
 
         [HttpPost,AllowAnonymous]
-        public async Task WxPusherCallback(Dto.WxPusher.Req req)
+        public async Task WxPusherCallback([FromBody]Req req)
         {
+            Scope.Resolve<ILogger<WxController>>().LogInformation($"WxPusherCallback:{req.ToJson()}");
             await WxBo.WxPusherUserSubscribeAsync(req.Data.AppKey,req.Data.To<UserDto>());
         }
     }
