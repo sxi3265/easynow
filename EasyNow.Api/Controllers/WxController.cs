@@ -1,3 +1,6 @@
+using System.Threading.Tasks;
+using Autofac;
+using EasyNow.ApiClient.WxPusher;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

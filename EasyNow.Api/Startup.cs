@@ -8,6 +8,7 @@ using Autofac.Extensions.DependencyInjection;
 using AutoMapper.Internal;
 using EasyNow.Api.Filters;
 using EasyNow.Api.Services;
+using EasyNow.ApiClient.WxPusher;
 using EasyNow.Bo;
 using EasyNow.Dal;
 using EasyNow.Utility.Extensions;
@@ -22,6 +23,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Refit;
 
 namespace EasyNow.Api
 {
@@ -49,7 +53,7 @@ namespace EasyNow.Api
                 opts.TokenValidationParameters=new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey  = true,
-                    IssuerSigningKey =new SymmetricSecurityKey(Encoding.UTF8.GetBytes("12345678901234567890")),
+                    IssuerSigningKey =new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])),
                     ValidIssuer = "easynow.me",
                     ValidAudience = "api",
                     ValidateIssuer = false,
@@ -74,6 +78,15 @@ namespace EasyNow.Api
             services.AddCors();
             services.AddGrpc();
             services.AddAuthorization();
+            var settings = new RefitSettings();
+            settings.ContentSerializer = new NewtonsoftJsonContentSerializer(new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            });
+            services.AddRefitClient<IWxPusher>(settings).ConfigureHttpClient(c =>
+            {
+                c.BaseAddress = new Uri("http://wxpusher.zjiecode.com");
+            });
         }
 
         public void ConfigureContainer(ContainerBuilder builder)

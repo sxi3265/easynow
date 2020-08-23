@@ -49,10 +49,7 @@ namespace EasyNow.Api
                 .ConfigureLogging((hostBuilderContext,logging) =>
                 {
                     logging.ClearProviders();
-                    if (hostBuilderContext.HostingEnvironment.IsDevelopment())
-                    {
-                        logging.AddConsole();
-                    }
+                    logging.AddConsole();
                     logging.SetMinimumLevel(LogLevel.Trace);
                 })
                 .UseNLog();

@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EasyNow.ApiClient\EasyNow.ApiClient.csproj" />
     <ProjectReference Include="..\EasyNow.Dal\EasyNow.Dal.csproj" />
     <ProjectReference Include="..\EasyNow.Dto\EasyNow.Dto.csproj" />
     <ProjectReference Include="..\EasyNow.Utility\EasyNow.Utility.csproj" />

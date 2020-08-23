@@ -3,10 +3,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 using EasyNow.Bo.Abstractions;
 using EasyNow.Dto.User;
 using EasyNow.Utility.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace EasyNow.Bo
@@ -25,7 +27,7 @@ namespace EasyNow.Bo
             {
                 new Claim(ClaimTypes.Name,user.Account)
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("12345678901234567890"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Scope.Resolve<IConfiguration>()["Jwt:Key"]));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var jwtToken = new JwtSecurityToken("easynow.me", "api", claims, expires: DateTime.Now.AddHours(1), signingCredentials: credentials);
 

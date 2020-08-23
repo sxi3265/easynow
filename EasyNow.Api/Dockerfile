@@ -9,7 +9,6 @@ WORKDIR /src
 COPY . .
 RUN dotnet restore "EasyNow.Api/EasyNow.Api.csproj"
 WORKDIR "/src/EasyNow.Api"
-RUN dotnet build "EasyNow.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "EasyNow.Api.csproj" -c Release -o /app/publish

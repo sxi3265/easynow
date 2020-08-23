@@ -13,7 +13,7 @@ namespace EasyNow.Api.Controllers
         private IUserBo UserBo => Scope.Resolve<IUserBo>();
 
         [HttpPost,AllowAnonymous]
-        public Task<LoginResult> Login(LoginModel model)
+        public Task<LoginResult> Login([FromBody]LoginModel model)
         {
             return UserBo.Login(model);
         }
