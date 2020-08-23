@@ -18,7 +18,7 @@ namespace EasyNow.Bo
         public async Task<LoginResult> Login(LoginModel model)
         {
             var user = await this.Db.User.AsNoTracking()
-                .FirstOrDefaultAsync(e => e.Account == model.UserName && e.Password == model.Password);
+                .FirstOrDefaultAsync(e => e.Account == model.Account && e.Password == model.Password);
             if (user == null)
             {
                 throw new MessageException("登录失败");

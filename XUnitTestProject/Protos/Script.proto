@@ -1,0 +1,15 @@
+﻿syntax ="proto3";
+
+option csharp_namespace = "XUnitTestProject";
+
+service Script{
+	rpc Query(ScriptQueryReq) returns (ScriptQueryResp);
+}
+
+message ScriptQueryReq{
+	string name=1;
+}
+
+message ScriptQueryResp{
+
+}
