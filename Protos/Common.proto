@@ -1,0 +1,10 @@
+﻿syntax ="proto3";
+
+option csharp_namespace = "EasyNow";
+package EasyNow;
+
+message PageInfo{
+	int32 totalItemCount=1;
+	int32 pageNumber=2;
+	int32 pageSize=3;
+}

@@ -1,6 +1,7 @@
 ﻿syntax ="proto3";
 
-option csharp_namespace = "EasyNow.Api";
+option csharp_namespace = "EasyNow";
+package EasyNow;
 
 service User{
 	rpc Login(UserLoginReq) returns (UserLoginResp);

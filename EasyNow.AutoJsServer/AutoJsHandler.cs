@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using Autofac;
-using EasyNow.Bo.Abstractions;
 using EasyNow.Dto;
 using EasyNow.Dto.Device;
 using EasyNow.Utility.Extensions;

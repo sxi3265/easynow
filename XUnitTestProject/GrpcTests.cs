@@ -6,7 +6,7 @@ namespace XUnitTestProject
 {
     public class GrpcTests
     {
-        private GrpcChannel _channel;
+        private readonly GrpcChannel _channel;
 
         public GrpcTests()
         {
