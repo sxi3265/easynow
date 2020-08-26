@@ -201,6 +201,9 @@
     <property name="Status" type="EasyNow.Dal.DeviceStatus" p1:ValidateRequired="true" p1:Guid="e51adf65-71fb-46e4-8888-4a9ae96ecd8c">
       <column name="" />
     </property>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="fdc271d6-782e-4cd9-86a5-521be7173a37">
+      <column name="" />
+    </property>
   </class>
   <class name="UserDevice" entity-set="UserDevice" p1:Guid="9b00f53b-8159-4711-8638-c15a9a2f3b03">
     <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="69561cad-8108-41b4-9e76-deaa3f8fd79b">

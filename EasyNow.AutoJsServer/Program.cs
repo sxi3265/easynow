@@ -4,9 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using EasyNow.Dal;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -24,7 +22,6 @@ namespace EasyNow.AutoJsServer
             {
                 logger.Debug("init main");
                 var host = CreateHostBuilder(args).Build();
-                DbInitializer.Initialize(host.Services.GetService<ILifetimeScope>(),host.Services.GetService<EasyNowContext>());
                 host.Run();
             }
             catch (Exception exception)

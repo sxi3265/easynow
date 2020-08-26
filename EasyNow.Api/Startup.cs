@@ -118,6 +118,7 @@ namespace EasyNow.Api
             {
                 endpoints.MapGrpcService<ScriptService>();
                 endpoints.MapGrpcService<UserService>();
+                endpoints.MapGrpcService<DeviceService>();
                 endpoints.MapControllers();   
             });
         }

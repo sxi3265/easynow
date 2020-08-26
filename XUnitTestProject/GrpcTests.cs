@@ -1,4 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using AutoMapper.Configuration.Annotations;
+using EasyNow;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
 using Xunit;
 
@@ -10,7 +14,8 @@ namespace XUnitTestProject
 
         public GrpcTests()
         {
-            _channel= GrpcChannel.ForAddress("https://api.easynow.me");
+            _channel= GrpcChannel.ForAddress("https://localhost:5001");
+            //_channel= GrpcChannel.ForAddress("https://api.easynow.me");
         }
 
         [Fact]
@@ -28,6 +33,19 @@ namespace XUnitTestProject
             {
                 Account = "sxi3265",
                 Password = "sbxaialhj"
+            });
+        }
+
+        [Fact]
+        public async Task Test3()
+        {
+            var client = new Device.DeviceClient(_channel);
+            var result = await client.AddOrUpdateAsync(new DeviceInfo
+            {
+                Ip = "127.0.0.1",
+                Name = "test name",
+                Uuid = "123123123",
+                LastOnlineTime = Timestamp.FromDateTime(DateTime.UtcNow)
             });
         }
     }

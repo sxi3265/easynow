@@ -1,0 +1,26 @@
+﻿syntax ="proto3";
+
+option csharp_namespace = "EasyNow";
+package easynow;
+
+import "Common.proto";
+import "google/protobuf/timestamp.proto";
+
+service Device{
+	rpc AddOrUpdate(DeviceInfo) returns (DeviceInfo);
+}
+
+enum DeviceStatus{
+	Offline=0;
+	Online=1;
+}
+
+message DeviceInfo{
+	BaseInfo baseInfo=1;
+	string name=2;
+	string ip=3;
+	DeviceStatus status=4;
+	google.protobuf.Timestamp lastOnlineTime=5;
+	string socketId=6;
+	string uuid=7;
+}

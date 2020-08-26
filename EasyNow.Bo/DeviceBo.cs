@@ -27,8 +27,12 @@ namespace EasyNow.Bo
                 device = model.To<Device>();
                 await this.Db.Device.AddAsync(device);
             }
-
-            model.CopyTo(device);
+            else
+            {
+                model.Id = device.Id;
+                model.CopyTo(device);
+            }
+            
             await this.Db.SaveChangesAsync();
             return device.To<DeviceDto>();
         }
