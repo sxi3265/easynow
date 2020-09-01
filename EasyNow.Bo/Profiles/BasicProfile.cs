@@ -30,6 +30,8 @@ namespace EasyNow.Bo.Profiles
                     opts.MapFrom(s=>s.Time);
                 });
             this.CreateMap<UserDto, WxPusherUser>();
+
+            this.CreateMap<Dto.DeviceStatus, Dal.DeviceStatus>();
         }
     }
 }
