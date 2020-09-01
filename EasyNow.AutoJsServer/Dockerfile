@@ -6,11 +6,9 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["EasyNow.AutoJsServer/EasyNow.AutoJsServer.csproj", "EasyNow.AutoJsServer/"]
-RUN dotnet restore "EasyNow.AutoJsServer/EasyNow.AutoJsServer.csproj"
 COPY . .
+RUN dotnet restore "EasyNow.AutoJsServer/EasyNow.AutoJsServer.csproj"
 WORKDIR "/src/EasyNow.AutoJsServer"
-RUN dotnet build "EasyNow.AutoJsServer.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "EasyNow.AutoJsServer.csproj" -c Release -o /app/publish

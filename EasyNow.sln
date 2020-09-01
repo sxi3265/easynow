@@ -36,12 +36,15 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Api", "EasyNow.Api\EasyNow.Api.csproj", "{5AE74C16-1A85-4777-B9E4-25503BD989DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{F8DA212B-F9D5-4E9D-9AAC-820BBAC11669}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dockerimage.yml = .github\workflows\dockerimage.yml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Web", "EasyNow.Web\EasyNow.Web.csproj", "{C55DCA1B-5A41-4E9E-A0F5-C395358187E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Admin.Web", "EasyNow.Admin.Web\EasyNow.Admin.Web.csproj", "{FDC7782A-6104-47D0-9270-CAEE9E22231F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.Client", "EasyNow.Client\EasyNow.Client.csproj", "{DC8F8345-EE0C-4E72-BF45-F3A3C8D22B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Client", "EasyNow.Client\EasyNow.Client.csproj", "{DC8F8345-EE0C-4E72-BF45-F3A3C8D22B34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -38,9 +38,17 @@ namespace EasyNow.AutoJsServer
             {
                 return;
             }
-            await socket.CloseAsync(closeStatus: WebSocketCloseStatus.NormalClosure,
-                statusDescription: "Closed by the ConnectionManager",
-                cancellationToken: CancellationToken.None);
+
+            try
+            {
+                await socket.CloseAsync(closeStatus: WebSocketCloseStatus.NormalClosure,
+                    statusDescription: "Closed by the ConnectionManager",
+                    cancellationToken: CancellationToken.None);
+            }
+            catch
+            {
+                // ignored
+            }
         }
 
         private string CreateConnectionId()

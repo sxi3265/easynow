@@ -21,4 +21,8 @@
     <Protobuf Include="../Protos/*.proto" GrpcServices="Client" Link="Protos\%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientModule.cs~RF5ec6d14.TMP" />
+  </ItemGroup>
+
 </Project>

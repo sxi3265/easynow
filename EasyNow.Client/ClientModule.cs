@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Grpc.Core;
 using Grpc.Net.Client;
+using Microsoft.Extensions.Options;
 
 namespace EasyNow.Client
 {
@@ -8,7 +9,7 @@ namespace EasyNow.Client
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterInstance(GrpcChannel.ForAddress("https://api.easynow.me")).As<ChannelBase>();
+            builder.Register(c => GrpcChannel.ForAddress(c.Resolve<IOptions<ClientOptions>>().Value.ApiUri)).As<ChannelBase>();
             builder.RegisterType<DeviceGrpcClient>().AsImplementedInterfaces().SingleInstance();
             builder.RegisterType<ScriptGrpcClient>().AsImplementedInterfaces().SingleInstance();
             builder.RegisterType<Device.DeviceClient>().SingleInstance();
