@@ -30,6 +30,7 @@ jobs:
           echo VERSION=$VERSION
           docker tag image $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+          
   push_autojs_server:
 
     runs-on: ubuntu-latest
