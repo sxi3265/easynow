@@ -24,6 +24,7 @@ namespace EasyNow.Client.Profiles
             {
                 s.BaseInfo.CopyTo(d);
             });
+            this.CreateMap<Dto.DeviceStatus, DeviceStatus>();
         }
     }
 }

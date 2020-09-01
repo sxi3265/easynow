@@ -30,9 +30,9 @@ namespace EasyNow.AutoJsServer
 
         public override async Task OnDisconnected(WebSocket socket)
         {
-            await base.OnDisconnected(socket);
             var socketId = this.WebSocketConnectionManager.GetId(socket);
             await _scope.Resolve<IDeviceClient>().UpdateStatusAsync(socketId, Dto.DeviceStatus.Offline);
+            await base.OnDisconnected(socket);
         }
 
         public override async Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, byte[] buffer)
