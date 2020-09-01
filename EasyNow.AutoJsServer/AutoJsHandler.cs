@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using Autofac;
+using EasyNow.Client;
 using EasyNow.Dto;
 using EasyNow.Dto.Device;
 using EasyNow.Utility.Extensions;
@@ -25,6 +26,13 @@ namespace EasyNow.AutoJsServer
         public AutoJsHandler(ConnectionManager webSocketConnectionManager, ILifetimeScope scope) : base(webSocketConnectionManager)
         {
             _scope = scope;
+        }
+
+        public override async Task OnDisconnected(WebSocket socket)
+        {
+            await base.OnDisconnected(socket);
+            var socketId = this.WebSocketConnectionManager.GetId(socket);
+            await _scope.Resolve<IDeviceClient>().UpdateStatusAsync(socketId, Dto.DeviceStatus.Offline);
         }
 
         public override async Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, byte[] buffer)
@@ -58,17 +66,17 @@ namespace EasyNow.AutoJsServer
                 case "log":
                     var log = msg.Data["log"].ToString();
                     var socketId = this.WebSocketConnectionManager.GetId(socket);
-                    if (_socketClientInfoDic.ContainsKey(socketId)&&_socketClientInfoDic.TryRemove(socketId,out var clientInfo))
+                    if (_socketClientInfoDic.TryGetValue(socketId,out var clientInfo))
                     {
                         var match = AndroidRegex.Match(log);
                         if (match.Success)
                         {
                             var androidId = match.Groups["androidId"].Value;
-                            await _scope.Resolve<IDeviceBo>().AddOrUpdateAsync(new DeviceDto
+                            await _scope.Resolve<IDeviceClient>().AddOrUpdateAsync(new DeviceDto
                             {
                                 Name = clientInfo.DeviceName,
                                 Ip = _scope.Resolve<IHttpContextAccessor>().HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString(),
-                                Status = DeviceStatus.Online,
+                                Status = Dto.DeviceStatus.Online,
                                 LastOnlineTime = DateTime.UtcNow,
                                 SocketId = socketId,
                                 Uuid = androidId

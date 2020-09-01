@@ -8,7 +8,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using EasyNow.Client;
 using EasyNow.Utility.Extensions;
+using Grpc.Core;
+using Grpc.Net.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -40,6 +43,8 @@ namespace EasyNow.AutoJsServer
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterAutoMapper(this.GetType().Assembly);
+            builder.RegisterModule<ClientModule>();
+            builder.RegisterAutoMapper(this.GetType().Assembly, typeof(ClientModule).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +59,7 @@ namespace EasyNow.AutoJsServer
                 app.UseDeveloperExceptionPage();
             }
 
-            var webSocketOptions = new WebSocketOptions() 
+            var webSocketOptions = new WebSocketOptions
             {
                 KeepAliveInterval = TimeSpan.FromSeconds(120),
                 ReceiveBufferSize = 4 * 1024

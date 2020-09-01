@@ -6,6 +6,7 @@ using EasyNow.Dal;
 using EasyNow.Dto.Device;
 using EasyNow.Utility.Extensions;
 using Microsoft.EntityFrameworkCore;
+using DeviceStatus = EasyNow.Dto.DeviceStatus;
 
 namespace EasyNow.Bo
 {
@@ -35,6 +36,18 @@ namespace EasyNow.Bo
             
             await this.Db.SaveChangesAsync();
             return device.To<DeviceDto>();
+        }
+
+        public async Task UpdateStatusAsync(string socketId, DeviceStatus status)
+        {
+            var device =await this.Db.Device.FirstOrDefaultAsync(e => e.SocketId == socketId);
+            if (device == null)
+            {
+                return;
+            }
+
+            device.Status = status.To<Dal.DeviceStatus>();
+            await this.Db.SaveChangesAsync();
         }
     }
 }
