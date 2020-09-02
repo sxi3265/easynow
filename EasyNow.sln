@@ -48,6 +48,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Client", "EasyNow.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.Hangfire", "EasyNow.Hangfire\EasyNow.Hangfire.csproj", "{5893A2C1-BB76-4F16-B2B7-4A595EE3573E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.Tasks", "EasyNow.Tasks\EasyNow.Tasks.csproj", "{45024E21-92F2-42D5-A6DD-1013546C3584}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -266,6 +268,18 @@ Global
 		{5893A2C1-BB76-4F16-B2B7-4A595EE3573E}.Release|iPhone.Build.0 = Release|Any CPU
 		{5893A2C1-BB76-4F16-B2B7-4A595EE3573E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{5893A2C1-BB76-4F16-B2B7-4A595EE3573E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Release|iPhone.Build.0 = Release|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{45024E21-92F2-42D5-A6DD-1013546C3584}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
