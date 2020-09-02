@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "EasyNow.Hangfire": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
