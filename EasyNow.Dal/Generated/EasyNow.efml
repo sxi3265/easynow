@@ -404,6 +404,23 @@
       <column name="" not-null="False" />
     </property>
   </class>
+  <class name="WxPusherService" entity-set="WxPusherService" p1:Guid="3e428cf8-a925-49ee-9c03-8a23cfe452b7">
+    <id name="Id" type="Guid" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="eb1977e3-fa62-4dd2-832d-ef8c4d0fd046">
+      <column name="" />
+    </id>
+    <property name="CreateTime" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="96824e8e-fbc9-4bd0-a10d-679da7ced98f">
+      <column name="" />
+    </property>
+    <property name="UpdateTime" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="49f8ebd4-84ef-4d77-8936-93f9567c5393">
+      <column name="" />
+    </property>
+    <property name="Creator" type="Guid" p1:ValidateRequired="true" p1:Guid="22a27929-8768-490c-802c-9498ddc369ef">
+      <column name="" />
+    </property>
+    <property name="Updater" type="Guid" p1:ValidateRequired="true" p1:Guid="ff4d65c3-212c-4337-a58f-d877fef2e89d">
+      <column name="" />
+    </property>
+  </class>
   <associations>
     <association name="User_UserRole" cardinality="OneToMany" p1:Guid="35d7051c-1ea2-4741-991d-3e194af08ec1">
       <end1 multiplicity="One" name="User" class="UserRole" relation-class="User" constrained="True" lazy="False" p1:Guid="36c31250-8a75-4c39-b544-be0fa17db393">
@@ -523,6 +540,14 @@
       </end1>
       <end2 multiplicity="Many" name="WxPusherAppUsers" class="WxPusherUser" relation-class="WxPusherAppUser" lazy="False" p1:Guid="8f0c5278-f55e-46ee-88a6-e260429b3ff1">
         <property name="UserId" />
+      </end2>
+    </association>
+    <association name="Service_WxPusherService" cardinality="OneToOne" p1:Guid="c343f16a-3fe1-4c8d-a1fc-d8d333436443">
+      <end1 multiplicity="One" name="Service" class="WxPusherService" relation-class="Service" constrained="True" lazy="False" p1:Guid="e9f3969b-82d9-4a6f-8765-7dbc5ddd38e8">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="One" name="WxPusherService" class="Service" relation-class="WxPusherService" generate="False" constrained="False" lazy="False" p1:Guid="1093ea05-a591-4e25-92a8-9748775d3751">
+        <property name="Id" />
       </end2>
     </association>
   </associations>
