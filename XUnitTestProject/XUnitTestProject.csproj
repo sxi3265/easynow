@@ -32,10 +32,4 @@
     <ProjectReference Include="..\EasyNow.Utility\EasyNow.Utility.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="kubeconfig">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

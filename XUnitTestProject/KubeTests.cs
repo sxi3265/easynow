@@ -20,7 +20,7 @@ namespace XUnitTestProject
 
             await client.DeploymentsV1().Update("test", p =>
             {
-                p.Replace(d => d.Spec.Paused, false);
+                //p.Replace(d => d.Spec.Paused, false);
                 //d.Replace(d=>d.Sta)
                 //d.Replace(d=>d.Spec.Template.)
             },"default");
