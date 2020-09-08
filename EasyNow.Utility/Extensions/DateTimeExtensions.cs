@@ -13,7 +13,7 @@ namespace EasyNow.Utility.Extensions
         public static long TimeStamp(this DateTime dateTime)
         {
             var ts = dateTime - StartTime;
-            return Convert.ToInt64(ts.Seconds);
+            return Convert.ToInt64(ts.TotalMilliseconds);
         }
 
         /// <summary>
