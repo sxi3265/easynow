@@ -1,0 +1,23 @@
+@page "/"
+
+@using Syncfusion.Blazor.Grids
+@using EasyNow.Dto.Script
+<SfGrid DataSource="@GridData" AllowPaging="true" Height="100%">
+    <GridPageSettings PageCount="5" PageSizes="true"></GridPageSettings>
+    <GridColumns>
+        <GridColumn Field=@nameof(ScriptInfo.Id) HeaderText="Order ID" TextAlign="TextAlign.Right"  Width="120"></GridColumn>
+        <GridColumn Field=@nameof(ScriptInfo.Code) HeaderText="Customer Name" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(ScriptInfo.Name) HeaderText="Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right"  Width="130"></GridColumn>
+    </GridColumns>
+</SfGrid>
+@code{
+    public List<ScriptInfo> GridData { get; set; }
+    protected override void OnInitialized()
+    {
+        GridData = Enumerable.Range(0, 50).Select(e => new ScriptInfo
+        {
+            Id = Guid.NewGuid(),
+            Code = "text"+e
+        }).ToList();
+    }
+}

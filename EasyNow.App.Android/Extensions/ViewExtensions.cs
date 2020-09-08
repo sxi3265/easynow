@@ -1,4 +1,4 @@
-﻿using Android.Content;
+using Android.Content;
 using Android.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

@@ -1,4 +1,4 @@
-﻿using Android.Views.Accessibility;
+using Android.Views.Accessibility;
 using AccessibilityService = EasyNow.App.Droid.Accessibility.AccessibilityService;
 
 namespace EasyNow.App.Droid.Accessibility.Event

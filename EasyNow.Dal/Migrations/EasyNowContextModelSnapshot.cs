@@ -14,68 +14,454 @@ namespace EasyNow.Dal.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("EasyNow.Dal.Entities.Script", b =>
+            modelBuilder.Entity("EasyNow.Dal.AutoJsService", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
                         .HasColumnType("char(36)");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreateTime")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime");
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("FileId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnName("FileId")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateTime")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime");
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Script");
+                    b.ToTable("AutoJsService");
                 });
 
-            modelBuilder.Entity("EasyNow.Dal.Entities.User", b =>
+            modelBuilder.Entity("EasyNow.Dal.Device", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Ip")
+                        .IsRequired()
+                        .HasColumnName("Ip")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("LastOnlineTime")
+                        .HasColumnName("LastOnlineTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("Name")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("SocketId")
+                        .IsRequired()
+                        .HasColumnName("SocketId")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<int>("Status")
+                        .HasColumnName("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Uuid")
+                        .IsRequired()
+                        .HasColumnName("Uuid")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Device");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.Menu", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnName("Code")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("Name")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Menu");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.Privilege", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnName("Code")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("Name")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Privilege");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnName("Code")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("Name")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.RoleMenu", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("MenuId")
+                        .HasColumnName("MenuId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnName("RoleId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RoleMenu");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.RolePrivilege", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("PrivilegeId")
+                        .HasColumnName("PrivilegeId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnName("RoleId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PrivilegeId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RolePrivilege");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.Service", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnName("CategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnName("Code")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("Name")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Service");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.ServiceCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnName("Code")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("Name")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<Guid?>("ParentId")
+                        .HasColumnName("ParentId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("ServiceCategory");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Account")
                         .IsRequired()
-                        .HasColumnType("nchar(50)");
+                        .HasColumnName("Account")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("CreateTime")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime");
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("Name")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("char(32)");
+                        .HasColumnName("Password")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateTime")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime");
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
@@ -83,51 +469,388 @@ namespace EasyNow.Dal.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("EasyNow.Dal.Entities.UserScript", b =>
+            modelBuilder.Entity("EasyNow.Dal.UserDevice", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreateTime")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime");
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("ScriptId")
+                    b.Property<Guid>("DeviceId")
+                        .HasColumnName("DeviceId")
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("UpdateTime")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime");
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
                         .HasColumnType("char(36)");
 
                     b.Property<Guid>("UserId")
+                        .HasColumnName("UserId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ScriptId");
+                    b.HasIndex("DeviceId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserScript");
+                    b.ToTable("UserDevice");
                 });
 
-            modelBuilder.Entity("EasyNow.Dal.Entities.UserScript", b =>
+            modelBuilder.Entity("EasyNow.Dal.UserRole", b =>
                 {
-                    b.HasOne("EasyNow.Dal.Entities.Script", "Script")
-                        .WithMany()
-                        .HasForeignKey("ScriptId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnName("RoleId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnName("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRole");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.UserService", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("ServiceId")
+                        .HasColumnName("ServiceId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnName("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserService");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.WxPusherApp", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnName("Key")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("Name")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnName("Token")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WxPusherApp");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.WxPusherAppUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("AppId")
+                        .HasColumnName("AppId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnName("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("WxPusherAppUser");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.WxPusherUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("CreateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Creator")
+                        .HasColumnName("Creator")
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("Enable")
+                        .HasColumnName("Enable")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("HeadImg")
+                        .IsRequired()
+                        .HasColumnName("HeadImg")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("NickName")
+                        .IsRequired()
+                        .HasColumnName("NickName")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("SubTime")
+                        .HasColumnName("SubTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Uid")
+                        .IsRequired()
+                        .HasColumnName("Uid")
+                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("UpdateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("Updater")
+                        .HasColumnName("Updater")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WxPusherUser");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.AutoJsService", b =>
+                {
+                    b.HasOne("EasyNow.Dal.Service", "Service")
+                        .WithOne()
+                        .HasForeignKey("EasyNow.Dal.AutoJsService", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.RoleMenu", b =>
+                {
+                    b.HasOne("EasyNow.Dal.Menu", "Menu")
+                        .WithMany("RoleMenus")
+                        .HasForeignKey("MenuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EasyNow.Dal.Entities.User", "User")
-                        .WithMany("UserScripts")
+                    b.HasOne("EasyNow.Dal.Role", "Role")
+                        .WithMany("RoleMenus")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.RolePrivilege", b =>
+                {
+                    b.HasOne("EasyNow.Dal.Privilege", "Privilege")
+                        .WithMany("RolePrivileges")
+                        .HasForeignKey("PrivilegeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EasyNow.Dal.Role", "Role")
+                        .WithMany("RolePrivileges")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.Service", b =>
+                {
+                    b.HasOne("EasyNow.Dal.ServiceCategory", "Category")
+                        .WithMany("Services")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.ServiceCategory", b =>
+                {
+                    b.HasOne("EasyNow.Dal.ServiceCategory", "Parent")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId");
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.UserDevice", b =>
+                {
+                    b.HasOne("EasyNow.Dal.Device", "Device")
+                        .WithMany("UserDevices")
+                        .HasForeignKey("DeviceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EasyNow.Dal.User", "User")
+                        .WithMany("UserDevices")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.UserRole", b =>
+                {
+                    b.HasOne("EasyNow.Dal.Role", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EasyNow.Dal.User", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.UserService", b =>
+                {
+                    b.HasOne("EasyNow.Dal.Service", "Service")
+                        .WithMany("UserServices")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EasyNow.Dal.User", "User")
+                        .WithMany("UserServices")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EasyNow.Dal.WxPusherAppUser", b =>
+                {
+                    b.HasOne("EasyNow.Dal.WxPusherApp", "WxPusherApp")
+                        .WithMany("WxPusherAppUsers")
+                        .HasForeignKey("AppId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EasyNow.Dal.WxPusherUser", "WxPusherUser")
+                        .WithMany("WxPusherAppUsers")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

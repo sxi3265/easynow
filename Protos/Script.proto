@@ -1,0 +1,25 @@
+﻿syntax ="proto3";
+
+option csharp_namespace = "EasyNow";
+package easynow;
+
+import "Common.proto";
+
+service Script{
+	rpc Query(ScriptQueryReq) returns (ScriptQueryResp);
+}
+
+message ScriptQueryReq{
+	string name=1;
+}
+message ScriptInfo{
+	string id=1;
+	string code=2;
+	string name=3;
+	bytes content=4;
+}
+
+message ScriptQueryResp{
+	PageInfo pageInfo=1;
+	repeated ScriptInfo data=2;
+}

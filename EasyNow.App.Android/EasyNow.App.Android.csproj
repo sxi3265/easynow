@@ -44,6 +44,12 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>D:\文档\个人\开发\Android\easynow.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>sbxaialhjA3.</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>easynow</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>sbxaialhjA3.</AndroidSigningKeyPass>
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -65,12 +71,12 @@
       <Version>1.0.14</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
-      <Version>3.1.6</Version>
+      <Version>3.1.7</Version>
     </PackageReference>
     <PackageReference Include="NLog.Extensions.Logging">
       <Version>1.6.4</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1143-pre1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <ItemGroup>
@@ -95,7 +101,6 @@
     <Compile Include="Script\Module\UiNodeCollection.cs" />
     <Compile Include="Script\Module\UiModule.cs" />
     <Compile Include="Script\IScriptRuntime.cs" />
-    <Compile Include="Script\Module\WindowModule.cs" />
     <Compile Include="Script\Scripts.cs" />
     <Compile Include="Services\HelpService.cs" />
     <Compile Include="MainActivity.cs" />

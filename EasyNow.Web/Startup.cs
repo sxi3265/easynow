@@ -1,15 +1,15 @@
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using AutoMapper.Internal;
-using EasyNow.Bo;
-using EasyNow.Dal;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using EasyNow.Web.Data;
 
 namespace EasyNow.Web
 {
@@ -22,43 +22,47 @@ namespace EasyNow.Web
 
         public IConfiguration Configuration { get; }
 
-        public ILifetimeScope AutofacContainer { get; private set; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
+        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddControllersAsServices();
-            services.AddDbContext<EasyNowContext>(opts =>
-            {
-                opts.UseMySql(Configuration.GetConnectionString("EasyNowDb"), o => o.MigrationsAssembly("EasyNow.Dal"));
-            });
-        }
-
-        public void ConfigureContainer(ContainerBuilder builder)
-        {
-            builder.RegisterAssemblyTypes(this.GetType().Assembly).AssignableTo<ControllerBase>()
-                .Where(e => !e.IsAbstract && !e.IsDynamic()).PropertiesAutowired().InstancePerDependency();
-            builder.RegisterModule<BoModule>();
-            builder.RegisterModule<DalModule>();
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
+            services.AddSingleton<WeatherForecastService>();
+            services.AddAntDesign();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            AutofacContainer = app.ApplicationServices.GetAutofacRoot();
-
+#if DEBUG
+            try
+            {
+                File.WriteAllText("browsersync-update.txt", DateTime.Now.ToString());
+            }
+            catch
+            {
+                // ignore
+            }
+#endif
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }

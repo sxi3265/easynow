@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using EasyNow.App.Droid.Execution;
 using Java.IO;
 using Java.Lang;

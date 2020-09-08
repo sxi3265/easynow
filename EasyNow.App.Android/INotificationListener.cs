@@ -1,4 +1,4 @@
-﻿namespace EasyNow.App.Droid
+namespace EasyNow.App.Droid
 {
     public interface INotificationListener
     {

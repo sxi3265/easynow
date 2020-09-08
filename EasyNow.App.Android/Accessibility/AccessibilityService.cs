@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Android;
 using Android.App;
+using Android.Views;
 using Android.Views.Accessibility;
 using Autofac;
 using EasyNow.App.Droid.Accessibility.Event;
+using EasyNow.App.Droid.Util;
 using Xamarin.Forms;
 
 namespace EasyNow.App.Droid.Accessibility
@@ -28,6 +30,11 @@ namespace EasyNow.App.Droid.Accessibility
         {
             Instance = this;
             base.OnServiceConnected();
+        }
+
+        protected override bool OnKeyEvent(KeyEvent e)
+        {
+            return base.OnKeyEvent(e);
         }
 
         public override void OnAccessibilityEvent(AccessibilityEvent e)

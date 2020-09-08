@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Java.Lang;
 
 namespace Com.Tencent.Bugly.Crashreport.Crash

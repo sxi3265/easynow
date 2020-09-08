@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Android.Webkit;
 
 namespace EasyNow.App.Droid.Util

@@ -1,8 +1,5 @@
-﻿using System.Text.Json.Serialization;
-
 namespace EasyNow.Utility.Collection
 {
-    [JsonConverter(typeof(PagedListConverter))]
     public class PagedListMetaData : IPagedList
     {
         protected PagedListMetaData()

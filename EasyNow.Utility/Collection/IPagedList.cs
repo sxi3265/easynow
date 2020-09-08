@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace EasyNow.Utility.Collection
 {
+    [JsonObject]
     public interface IPagedList
     {
         /// <summary>

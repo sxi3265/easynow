@@ -1,0 +1,20 @@
+﻿syntax ="proto3";
+
+option csharp_namespace = "EasyNow";
+package easynow;
+
+import "google/protobuf/timestamp.proto";
+
+message PageInfo{
+	int32 totalItemCount=1;
+	int32 pageNumber=2;
+	int32 pageSize=3;
+}
+
+message BaseInfo{
+	string id=1;
+	google.protobuf.Timestamp createTime=2;
+	google.protobuf.Timestamp updateTime=3;
+	string creator=4;
+	string updater=5;
+}

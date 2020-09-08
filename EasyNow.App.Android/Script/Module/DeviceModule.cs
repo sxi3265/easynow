@@ -1,4 +1,4 @@
-﻿using Android.AccessibilityServices;
+using Android.AccessibilityServices;
 using Android.Graphics;
 using Autofac;
 using EasyNow.App.Droid.Accessibility;
