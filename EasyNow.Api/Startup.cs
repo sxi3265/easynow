@@ -16,6 +16,7 @@ using EasyNow.Utility.Tools;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -88,6 +89,11 @@ namespace EasyNow.Api
             {
                 c.BaseAddress = new Uri("http://wxpusher.zjiecode.com");
             });
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -103,6 +109,7 @@ namespace EasyNow.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+            app.UseForwardedHeaders();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
