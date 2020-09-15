@@ -1,14 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using EasyNow.Utility.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Extensions.Logging;
-using PuppeteerSharp;
-using PuppeteerSharp.Input;
 
 namespace EasyNow.Job.Smzdm
 {
@@ -29,8 +26,8 @@ namespace EasyNow.Job.Smzdm
                 var servicesProvider = BuildDi(Configuration);
                 using (servicesProvider as IDisposable)
                 {
-                    var runner = servicesProvider.GetRequiredService<Runner>();
-                    await runner.DoActionAsync();
+                    var runner = servicesProvider.GetRequiredService<SmzdmCheckInJob>();
+                    await runner.ExecuteAsync();
 
                     // Console.WriteLine("Press ANY key to exit");
                     // Console.ReadKey();
@@ -50,68 +47,17 @@ namespace EasyNow.Job.Smzdm
         private static IServiceProvider BuildDi(IConfigurationRoot config)
         {
             return new ServiceCollection()
-                .AddTransient<Runner>()
+                .AddTransient<SmzdmCheckInJob>()
                 .AddSingleton(config)
+                .AddApiClient()
                 .AddLogging(loggingBuilder =>
                 {
                     loggingBuilder.ClearProviders();
                     loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
                     loggingBuilder.AddNLog(config);
+                    loggingBuilder.AddConsole();
                 })
                 .BuildServiceProvider();
-        }
-    }
-    
-    public class Runner
-    {
-        private readonly ILogger<Runner> _logger;
-
-        private readonly IConfigurationRoot _configuration;
-
-        public Runner(ILogger<Runner> logger, IConfigurationRoot configuration)
-        {
-            _logger = logger;
-            _configuration = configuration;
-        }
-
-        public async Task DoActionAsync()
-        {
-            await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
-            var launchOptions = new LaunchOptions
-            {
-                Headless = _configuration["Headless"].To<bool>(),
-                Args = new []{"--no-sandbox"},
-                IgnoredDefaultArgs = new []{"--enable-automation"},
-                DefaultViewport = new ViewPortOptions
-                {
-                    Width = 1920,
-                    Height = 1080
-                }
-            };
-            var browser = await Puppeteer.LaunchAsync(launchOptions);
-            var page = await browser.NewPageAsync();
-            await page.SetUserAgentAsync(_configuration["UserAgent"]);
-            await page.SetCookieAsync(_configuration["Cookies"].FromJson<CookieParam[]>());
-            await page.GoToAsync("https://www.smzdm.com/",new NavigationOptions
-            {
-                Timeout = 0,
-                WaitUntil = new []
-                {
-                    WaitUntilNavigation.Load
-                }
-            });
-            var element =await page.WaitForSelectorAsync("a.J_punch");
-            var text=await (await element.GetPropertyAsync("textContent")).JsonValueAsync<string>();
-            // var b=await page.EvaluateFunctionAsync<string>("e=>e.textContent",element);
-            if (text == "签到领奖")
-            {
-                await element.ClickAsync();
-                await Task.Delay(5000);
-                element =await page.WaitForSelectorAsync("a.J_punch");
-                text=await (await element.GetPropertyAsync("textContent")).JsonValueAsync<string>();
-            }
-
-            _logger.LogInformation(text);
         }
     }
 }

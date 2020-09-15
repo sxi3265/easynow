@@ -11,12 +11,15 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.8" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.8" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.8" />
         <PackageReference Include="NLog.Mongo" Version="4.6.0.102" />
         <PackageReference Include="NLog" Version="4.7.4" />
         <PackageReference Include="NLog.Extensions.Logging" Version="1.6.5" />
     </ItemGroup>
     
     <ItemGroup>
+      <ProjectReference Include="..\EasyNow.ApiClient\EasyNow.ApiClient.csproj" />
+      <ProjectReference Include="..\EasyNow.Job\EasyNow.Job.csproj" />
       <ProjectReference Include="..\EasyNow.Utility\EasyNow.Utility.csproj" />
     </ItemGroup>
     

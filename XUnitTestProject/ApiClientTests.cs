@@ -17,15 +17,7 @@ namespace XUnitTestProject
         public async Task TestWxPusher()
         {
             var services=new ServiceCollection();
-            var settings = new RefitSettings();
-            settings.ContentSerializer =new NewtonsoftJsonContentSerializer(new JsonSerializerSettings
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            });
-            services.AddRefitClient<IWxPusher>(settings).ConfigureHttpClient(c =>
-            {
-                c.BaseAddress = new Uri("http://wxpusher.zjiecode.com");
-            });
+            services.AddApiClient();
 
             var serviceProvider = services.BuildServiceProvider();
             var wxPusher = serviceProvider.GetService<IWxPusher>();
