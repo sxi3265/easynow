@@ -80,7 +80,7 @@ namespace EasyNow.Job.Smzdm
             var launchOptions = new LaunchOptions
             {
                 Headless = _configuration["Headless"].To<bool>(),
-                // Args = new []{"--no-sandbox"},
+                Args = new []{"--no-sandbox"},
                 IgnoredDefaultArgs = new []{"--enable-automation"},
                 DefaultViewport = new ViewPortOptions
                 {
