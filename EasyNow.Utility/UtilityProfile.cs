@@ -17,6 +17,7 @@ namespace EasyNow.Utility
             CreateMap<object, Guid?>().ConvertUsing(s =>s==null|| s is string && string.IsNullOrEmpty((string) s) ? (Guid?) null : Guid.Parse(s.ToString()));
             CreateMap<string, Guid>().ConvertUsing(s=>string.IsNullOrEmpty(s) ? Guid.Empty : Guid.Parse(s));
             CreateMap<string, Guid?>().ConvertUsing(s =>string.IsNullOrEmpty(s) ? (Guid?) null : Guid.Parse(s));
+            CreateMap<string,bool>().ConvertUsing(s =>Convert.ToBoolean(s));
             CreateMap<Guid?, string>().ConvertUsing(g => g != null ? g.Value.ToString("N") : null);
             CreateMap<Guid, string>().ConvertUsing(g => g.ToString("N"));
             CreateMap<DateTime, string>().ConstructUsing(s => s.ToString("yyyy-MM-dd HH:mm:ss"));

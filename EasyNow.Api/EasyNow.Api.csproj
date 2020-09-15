@@ -27,9 +27,5 @@
     <Protobuf Include="../Protos/*.proto" GrpcServices="Server" Link="Protos\%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Profiles\DeviceProfile.cs~RF463738.TMP" />
-  </ItemGroup>
-
 
 </Project>
