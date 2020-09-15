@@ -69,7 +69,7 @@ namespace EasyNow.Job.Smzdm
             });
             
             // 未登录状态，说明cookie过期
-            if ((await page.QuerySelectorAsync("a.name-link1"))== null)
+            if ((await page.QuerySelectorAsync("a.name-link"))== null)
             {
                 var result=await _serviceProvider.GetService<IWxPusher>().SendMessage(new MessageReq
                 {
