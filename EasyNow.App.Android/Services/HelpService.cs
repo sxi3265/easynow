@@ -13,7 +13,6 @@ using Android.Graphics;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
-using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using Autofac;

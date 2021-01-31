@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
@@ -9,8 +10,7 @@ using Android.Runtime;
 using Android.OS;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Com.Tencent.Bugly.Crashreport;
-using Com.Tencent.Stat;
+using Com.Xiaomi.Mipush.Sdk;
 using EasyNow.App.Droid.Accessibility;
 using EasyNow.App.Droid.Accessibility.Event;
 using EasyNow.App.Droid.Script;
@@ -21,6 +21,7 @@ using EasyNow.App.Droid.Util;
 using EasyNow.App.Models;
 using EasyNow.App.Services;
 using EasyNow.App.ViewModels;
+using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
@@ -37,6 +38,18 @@ namespace EasyNow.App.Droid
     {
         private IContainer _container;
 
+        private bool ShouldInitMiPush() {
+            ActivityManager am = ((ActivityManager) GetSystemService(Context.ActivityService));
+            string mainProcessName = this.ApplicationInfo.ProcessName;
+            int myPid = Process.MyPid();
+            foreach (var info in am.RunningAppProcesses) {
+                if (info.Pid == myPid && mainProcessName==info.ProcessName) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -46,23 +59,29 @@ namespace EasyNow.App.Droid
 
             MessagingCenter.Subscribe<object,Item>(this,"ItemClick", (_,item) =>
             {
+                if (string.IsNullOrEmpty(item.Source))
+                {
+                    try {
+                        Crashes.GenerateTestCrash();
+                    } catch (Exception exception) {
+                        Crashes.TrackError(exception);
+                    }
+                    return;
+                }
                 var intent = new Intent(this,typeof(ScriptService));
                 intent.PutExtra("ScriptSource", item.Source);
                 this.StartService(intent);
             });
+            if (ShouldInitMiPush())
+            {
+                MiPushClient.RegisterPush(this, "2882303761518998214", "5331899889214");
+            }
+
+            MiPushClient.EnablePush(this);
             
             // 捕获全局未处理异常
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
-
-            // 接入bugly
-            CrashReport.InitCrashReport(this.ApplicationContext, "087aa56f91", false);
-
-            // 接入腾讯mta
-            StatConfig.DebugEnable = false;
-            StatConfig.SetAppKey("AT3A86Y5FZDW");
-            StatConfig.SetInstallChannel("EasyNow");
-            StatService.RegisterActivityLifecycleCallbacks(this.Application);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

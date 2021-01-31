@@ -6,6 +6,7 @@ using Android.OS;
 using Android.Views.Accessibility;
 using Xamarin.Forms;
 using Action = Android.Views.Accessibility.Action;
+using Rect = Android.Graphics.Rect;
 
 namespace EasyNow.App.Droid.Script.Module
 {

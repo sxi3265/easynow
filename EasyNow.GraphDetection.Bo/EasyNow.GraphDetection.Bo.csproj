@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenCvSharp4" Version="4.5.1.20210123" />
+    <PackageReference Include="OpenCvSharp4.Windows" Version="4.5.1.20210123" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+    <PackageReference Include="OpenCvSharp4.runtime.ubuntu.18.04-x64" Version="4.5.1.20210123" Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyNow.GraphDetection.Dto\EasyNow.GraphDetection.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

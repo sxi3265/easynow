@@ -47,7 +47,7 @@ namespace EasyNow.App.Droid.Script.Module
         /// <param name="func"></param>
         /// <param name="timeout"></param>
         /// <returns></returns>
-        public UiNode Wait(Func<UiNode,bool> func,double timeout=0f)
+        public UiNode Wait(Func<UiNode,bool> func,double timeout=0d)
         {
             try
             {

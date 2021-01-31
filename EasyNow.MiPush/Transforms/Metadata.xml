@@ -1,0 +1,13 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+  <attr path="/api/package[@name='com.xiaomi.mipush.sdk']/class[@name='PushMessageHandler']/method[@name='a' and count(parameter)=0 and @static='true']" name="managedName">StaticA</attr>
+  <attr path="/api/package[@name='com.xiaomi.mipush.sdk']/class[@name='PushMessageHandler']/method[@name='b' and count(parameter)=0 and @return='boolean']" name="managedName">StaticBooleanB</attr>
+  <!--<attr path="/api/package[@name='com.xiaomi.push.service']/class[@name='XMPushService']/method[@name='a' and count(parameter)=1 and parameter[1][@type='int'] and @return='boolean']" name="managedName">StaticBooleanA</attr>-->
+  <remove-node path="/api/package[@name='com.xiaomi.push.service']/class[@name='XMPushService']/method[@name='a' and count(parameter)=1 and parameter[1][@type='int'] and @return='boolean']" />
+</metadata>

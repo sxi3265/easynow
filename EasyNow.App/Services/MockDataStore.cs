@@ -72,7 +72,7 @@ namespace EasyNow.App.Services
                         node.click();
                         app.toast('完成签到');
                     }else{
-                        app.toast('已签到');
+                        app.toast(node.text);
                     }
                     "
                 },

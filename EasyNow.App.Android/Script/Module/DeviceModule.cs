@@ -28,5 +28,14 @@ namespace EasyNow.App.Droid.Script.Module
                 new GestureDescription.Builder().AddStroke(new GestureDescription.StrokeDescription(path, 0, (int)duration))
                     .Build(), null, null);
         }
+
+        /// <summary>
+        /// ªÒ»°AndroidId
+        /// </summary>
+        /// <returns></returns>
+        public string GetAndroidId()
+        {
+            return Android.Provider.Settings.Secure.GetString(Android.App.Application.Context.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
+        }
     }
 }
