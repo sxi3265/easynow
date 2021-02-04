@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml;
 using Android.App;
@@ -13,6 +15,10 @@ using Autofac.Extensions.DependencyInjection;
 using Com.Xiaomi.Mipush.Sdk;
 using EasyNow.App.Droid.Accessibility;
 using EasyNow.App.Droid.Accessibility.Event;
+using EasyNow.App.Droid.Frida;
+using EasyNow.App.Droid.Native;
+using EasyNow.App.Droid.Runtime;
+using EasyNow.App.Droid.Runtime.Api;
 using EasyNow.App.Droid.Script;
 using EasyNow.App.Droid.Script.Module;
 using EasyNow.App.Droid.Service;
@@ -21,6 +27,7 @@ using EasyNow.App.Droid.Util;
 using EasyNow.App.Models;
 using EasyNow.App.Services;
 using EasyNow.App.ViewModels;
+using Java.IO;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -28,8 +35,11 @@ using NLog;
 using NLog.Config;
 using NLog.Extensions.Logging;
 using Xamarin.Forms;
+using Activity = Android.App.Activity;
 using Logger = EasyNow.App.Services.Logger;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
+using Process = System.Diagnostics.Process;
+using String = Java.Lang.String;
 
 namespace EasyNow.App.Droid
 {
@@ -41,7 +51,7 @@ namespace EasyNow.App.Droid
         private bool ShouldInitMiPush() {
             ActivityManager am = ((ActivityManager) GetSystemService(Context.ActivityService));
             string mainProcessName = this.ApplicationInfo.ProcessName;
-            int myPid = Process.MyPid();
+            int myPid = Android.OS.Process.MyPid();
             foreach (var info in am.RunningAppProcesses) {
                 if (info.Pid == myPid && mainProcessName==info.ProcessName) {
                     return true;
@@ -61,13 +71,11 @@ namespace EasyNow.App.Droid
             {
                 if (string.IsNullOrEmpty(item.Source))
                 {
-                    try {
-                        Crashes.GenerateTestCrash();
-                    } catch (Exception exception) {
-                        Crashes.TrackError(exception);
-                    }
+                    Task.Run(_container.Resolve<FridaAgent>().Download).Wait();
+                    Task.Run(_container.Resolve<FridaAgent>().Start).Wait();
                     return;
                 }
+
                 var intent = new Intent(this,typeof(ScriptService));
                 intent.PutExtra("ScriptSource", item.Source);
                 this.StartService(intent);
@@ -120,7 +128,9 @@ namespace EasyNow.App.Droid
             builder.RegisterType<JsScriptRuntime>().AsImplementedInterfaces();
             builder.RegisterType<NotificationEvent>().AsSelf().AsImplementedInterfaces().SingleInstance();
             builder.RegisterType<ActivityInfoEvent>().AsSelf().AsImplementedInterfaces().SingleInstance();
-            builder.RegisterInstance(this.ApplicationContext);
+            builder.RegisterType<ProcessShell>().AsSelf().AsImplementedInterfaces().InstancePerDependency();
+            builder.RegisterType<FridaAgent>().SingleInstance();
+            builder.Register(c => c.ResolveNamed<Activity>("Main").ApplicationContext);
             _container = builder.Build();
             LoadApplication(_container.Resolve<App>());
         }

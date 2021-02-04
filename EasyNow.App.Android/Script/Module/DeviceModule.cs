@@ -1,7 +1,9 @@
+using System.Text.RegularExpressions;
 using Android.AccessibilityServices;
 using Android.Graphics;
 using Autofac;
 using EasyNow.App.Droid.Accessibility;
+using EasyNow.App.Droid.Runtime.Api;
 
 namespace EasyNow.App.Droid.Script.Module
 {
@@ -9,6 +11,8 @@ namespace EasyNow.App.Droid.Script.Module
     {
         private readonly ILifetimeScope _scope;
         private AccessibilityBridge AccessibilityBridge => _scope.Resolve<AccessibilityBridge>();
+
+        private static Regex NewLineRegex = new Regex("\r|\n");
 
         public DeviceModule(ILifetimeScope scope)
         {
@@ -36,6 +40,15 @@ namespace EasyNow.App.Droid.Script.Module
         public string GetAndroidId()
         {
             return Android.Provider.Settings.Secure.GetString(Android.App.Application.Context.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
+        }
+
+        /// <summary>
+        /// ªÒ»°CPUº‹ππ
+        /// </summary>
+        /// <returns></returns>
+        public string GetCpuAbi()
+        {
+            return NewLineRegex.Replace(IShell.Exec("getprop ro.product.cpu.abi").Result,string.Empty);
         }
     }
 }

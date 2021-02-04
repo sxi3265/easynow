@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="me.easynow.app" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
 	<application android:label="EasyNow" android:networkSecurityConfig="@xml/network_security_config">
-		<provider android:name="com.tencent.mid.api.MidProvider" android:authorities="me.easynow.app.TENCENT.MID.V3" android:exported="true"></provider>
 		<uses-library android:name="org.apache.http.legacy" android:required="false" />
 		<service android:name="com.xiaomi.push.service.XMPushService" android:enabled="true" android:process=":pushservice" />
 		<!--注：此service必须在3.0.1版本以后（包括3.0.1版本）加入-->
@@ -34,4 +33,5 @@
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<permission android:name="me.easynow.app.permission.MIPUSH_RECEIVE" android:protectionLevel="signature" />
 	<uses-permission android:name="me.easynow.app.permission.MIPUSH_RECEIVE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>
