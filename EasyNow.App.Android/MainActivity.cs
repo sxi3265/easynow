@@ -1,10 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using System.Xml;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -16,9 +11,7 @@ using Com.Xiaomi.Mipush.Sdk;
 using EasyNow.App.Droid.Accessibility;
 using EasyNow.App.Droid.Accessibility.Event;
 using EasyNow.App.Droid.Frida;
-using EasyNow.App.Droid.Native;
 using EasyNow.App.Droid.Runtime;
-using EasyNow.App.Droid.Runtime.Api;
 using EasyNow.App.Droid.Script;
 using EasyNow.App.Droid.Script.Module;
 using EasyNow.App.Droid.Service;
@@ -27,19 +20,14 @@ using EasyNow.App.Droid.Util;
 using EasyNow.App.Models;
 using EasyNow.App.Services;
 using EasyNow.App.ViewModels;
-using Java.IO;
-using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NLog;
 using NLog.Config;
 using NLog.Extensions.Logging;
 using Xamarin.Forms;
 using Activity = Android.App.Activity;
 using Logger = EasyNow.App.Services.Logger;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
-using Process = System.Diagnostics.Process;
-using String = Java.Lang.String;
 
 namespace EasyNow.App.Droid
 {
