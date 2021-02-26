@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 
-namespace EasyNow.Coin.App
+namespace EasyNow.Coin.Dto
 {
     public class OkexOptions
     {
@@ -8,12 +10,14 @@ namespace EasyNow.Coin.App
         public string ApiSecret { get; set; }
         public string PassPhrase { get; set; }
         public Proxy Proxy { get; set; }
-        public Dictionary<string,decimal[]> Transaction { get; set; }
+        public IConfigurationSection RuleCfg { get; set; }
     }
 
-    public class Proxy
+    public class RuleCfg:Dictionary<string,decimal[]>
     {
-        public string Host { get; set; }
-        public int Port { get; set; }
+        public RuleCfg()
+        {
+
+        }
     }
 }

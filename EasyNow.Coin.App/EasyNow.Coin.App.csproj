@@ -11,12 +11,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-    <PackageReference Include="OKEx.Net" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EasyNow.Coin.Bo\EasyNow.Coin.Bo.csproj" />
     <ProjectReference Include="..\EasyNow.Coin.Dal\EasyNow.Coin.Dal.csproj" />
-    <ProjectReference Include="..\EasyNow.Coin.Dto\EasyNow.Coin.Dto.csproj" />
   </ItemGroup>
 
   <ItemGroup>

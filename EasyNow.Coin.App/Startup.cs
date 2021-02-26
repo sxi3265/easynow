@@ -1,8 +1,12 @@
-﻿using Autofac;
+﻿using System.Linq;
+using Autofac;
+using EasyNow.Coin.Bo;
 using EasyNow.Coin.Dal;
+using EasyNow.Coin.Dto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace EasyNow.Coin.App
 {
@@ -27,6 +31,8 @@ namespace EasyNow.Coin.App
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterType<OkexService>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<Rule1>().AsSelf().AsImplementedInterfaces().InstancePerLifetimeScope();
+            //builder.RegisterType<Rule2>().AsSelf().AsImplementedInterfaces().InstancePerLifetimeScope();
         }
     }
 }
