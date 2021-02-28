@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.1.0" />
+    <PackageReference Include="EasyCaching.Core" Version="1.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="OKEx.Net" Version="2.0.1" />
@@ -14,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyNow.Coin.Dto\EasyNow.Coin.Dto.csproj" />
+    <ProjectReference Include="..\EasyNow.Utility\EasyNow.Utility.csproj" />
   </ItemGroup>
 
 </Project>

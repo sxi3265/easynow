@@ -59,7 +59,7 @@ namespace EasyNow.Coin.Bo
 
         public Task RunAsync()
         {
-            var symbol = "MASK-USDT";
+            var symbol = "DOGE-USDT";
             Subscribe(symbol);
             _orderDic.TryAdd(symbol, new Order
             {
@@ -219,9 +219,10 @@ namespace EasyNow.Coin.Bo
             var symbols = symbol.Split("-");
             _orderDic.TryGetValue(symbol, out var order);
             var balance=this._client.Spot_GetSymbolBalance(symbols[1]);
-            var buyCount = Math.Round(balance.Data.Balance / buyPrice*0.999m, 6);
+            //var buyCount = Math.Round(balance.Data.Balance / buyPrice*0.999m, 6);
+            var buyCount = 1000m;
             balance = this._client.Spot_GetSymbolBalance(symbols[0]);
-            var sellCount = Math.Round(balance.Data.Available, 6);
+            var sellCount = balance.Data.Available;
 
             
 

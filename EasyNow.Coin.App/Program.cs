@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using CryptoExchange.Net.Objects;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Okex.Net;
 using Okex.Net.CoreObjects;
 
@@ -32,6 +33,14 @@ namespace EasyNow.Coin.App
                         .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true,true)
                         .AddEnvironmentVariables()
                         .AddCommandLine(args);
+                })
+                .ConfigureLogging(config =>
+                {
+                    config.ClearProviders();
+                    config.AddConsole(options =>
+                    {
+                        options.FormatterName = "default";
+                    });
                 })
                 .UseStartup<Startup>()
                 .Build()

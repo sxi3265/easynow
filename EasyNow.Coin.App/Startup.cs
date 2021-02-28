@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Autofac;
 using EasyNow.Coin.Bo;
 using EasyNow.Coin.Dal;
@@ -26,13 +27,23 @@ namespace EasyNow.Coin.App
             {
                 builder.UseMySql(Configuration.GetConnectionString("CoinDb"),ServerVersion.AutoDetect(Configuration.GetConnectionString("CoinDb")));
             });
+            //services.AddEasyCaching(options =>
+            //{
+            //    options.UseCSRedis(config =>
+            //    {
+            //        config.DBConfig.ConnectionStrings = new List<string>
+            //        {
+            //            "127.0.0.1:6379,defaultDatabase=0,poolsize=10"
+            //        };
+            //    },"default").WithMessagePack();
+            //});
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterType<OkexService>().AsImplementedInterfaces().SingleInstance();
-            builder.RegisterType<Rule1>().AsSelf().AsImplementedInterfaces().InstancePerLifetimeScope();
-            //builder.RegisterType<Rule2>().AsSelf().AsImplementedInterfaces().InstancePerLifetimeScope();
+            //builder.RegisterType<Rule1>().AsSelf().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<Rule3>().AsSelf().AsImplementedInterfaces().InstancePerLifetimeScope();
         }
     }
 }
