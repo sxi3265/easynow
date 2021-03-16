@@ -12,6 +12,28 @@ namespace EasyNow.Utility.Extensions
     /// </summary>
     public static class EnumerableExtensions
     {
+        public static PagedList<T> ToPagedList<T>(this IEnumerable<T> allItems, int? pageNumber, int pageSize)
+        {
+            var truePageNumber = pageNumber ?? 1;
+            var itemIndex = (truePageNumber - 1) * pageSize;
+            var pageOfItems = allItems.Skip(itemIndex).Take(pageSize);
+            return new PagedList<T>(pageOfItems.ToArray(), new Pagination{PageNumber = truePageNumber, PageSize = pageSize}, allItems.Count());
+        }
+
+        public static PagedList<T> ToPagedList<T>(this IEnumerable<T> allItems, IPagination pagination)
+        {
+            return allItems.ToPagedList(pagination.PageNumber, pagination.PageSize);
+        }
+
+        public static PagedList<TDestination> ToPagedList<TSource,TDestination>(this IEnumerable<TSource> allItems, IPagination pagination)
+        {
+            var itemIndex = (pagination.PageNumber - 1) * pagination.PageSize;
+            var count = allItems.Count();
+            var pageOfItems = (itemIndex > 0 ? allItems.Skip(itemIndex) : allItems).Take(pagination.PageSize).Select(e=>e.To<TDestination>()).ToArray();
+            return new PagedList<TDestination>(pageOfItems, pagination,
+                count);
+        }
+
         /// <summary>
         /// the Foreach
         /// </summary>

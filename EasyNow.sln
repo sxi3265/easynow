@@ -3,16 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.Dto", "EasyNow.Dto\EasyNow.Dto.csproj", "{C3F97391-D281-4F99-920B-33940F76ACC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Dto", "EasyNow.Dto\EasyNow.Dto.csproj", "{C3F97391-D281-4F99-920B-33940F76ACC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.Utility", "EasyNow.Utility\EasyNow.Utility.csproj", "{EEC88FAB-980A-44BB-AC1F-C280A29837DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Utility", "EasyNow.Utility\EasyNow.Utility.csproj", "{EEC88FAB-980A-44BB-AC1F-C280A29837DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.Grpc", "EasyNow.Grpc\EasyNow.Grpc.csproj", "{648BF115-64CD-47D6-B841-75D635E7F636}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyNow.Grpc", "EasyNow.Grpc\EasyNow.Grpc.csproj", "{648BF115-64CD-47D6-B841-75D635E7F636}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "其他文件", "其他文件", "{EC7F9CDC-40A1-435E-90A9-F1ADBFB1FA45}"
 	ProjectSection(SolutionItems) = preProject
 		.gitlab-ci.yml = .gitlab-ci.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNow.AspNetCore", "EasyNow.AspNetCore\EasyNow.AspNetCore.csproj", "{BFB60676-9698-47CB-999F-BF4E04F032F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{648BF115-64CD-47D6-B841-75D635E7F636}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{648BF115-64CD-47D6-B841-75D635E7F636}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{648BF115-64CD-47D6-B841-75D635E7F636}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFB60676-9698-47CB-999F-BF4E04F032F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFB60676-9698-47CB-999F-BF4E04F032F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFB60676-9698-47CB-999F-BF4E04F032F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFB60676-9698-47CB-999F-BF4E04F032F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
